@@ -1,0 +1,306 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dde1ff",
+                        "outline": "#767680",
+                        "on-background": "#1b1b1f",
+                        "on-tertiary-container": "#d08500",
+                        "on-surface-variant": "#45464f",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#271500",
+                        "on-primary-fixed": "#091649",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#432800",
+                        "outline-variant": "#c6c5d0",
+                        "surface-container-low": "#f5f2f8",
+                        "primary": "#061447",
+                        "secondary": "#006c49",
+                        "on-primary-fixed-variant": "#384377",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container": "#efedf2",
+                        "on-primary-container": "#8792cb",
+                        "inverse-primary": "#b8c3ff",
+                        "on-surface": "#1b1b1f",
+                        "surface-variant": "#e4e1e7",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "inverse-on-surface": "#f2f0f5",
+                        "surface-dim": "#dbd9de",
+                        "primary-container": "#1e2a5c",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303034",
+                        "secondary-container": "#6cf8bb",
+                        "surface-tint": "#505b90",
+                        "surface": "#fbf8fd",
+                        "surface-container-highest": "#e4e1e7",
+                        "on-secondary-container": "#00714d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae7ec",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed": "#2a1700",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-bright": "#fbf8fd",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002113"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "base": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "title-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        .dark .glass-card {
+            background: rgba(30, 42, 92, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .premium-id-mesh {
+            background-color: #061447;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(226, 84%, 15%, 1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(160, 100%, 21%, 1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(226, 44%, 24%, 1) 0, transparent 50%);
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base">
+<div class="flex items-center gap-sm">
+<button class="text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button><div class="w-10 h-10 rounded-full overflow-hidden border border-primary/10">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional portrait of a tech-savvy young African professional resident with a friendly and confident expression. The lighting is soft and natural, emphasizing a high-trust and premium lifestyle aesthetic. The background is a clean, modern architectural interior with subtle glass elements and neutral tones that align with a sophisticated residential development." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHwy5SEK3O67dkVLKbEqKKxEc3wkF8rsWXzjh0hKjAoP9B1zl3veMOoAEMy6btfe-Hi1TecTw-2-_-j1SlLhN7J8N6YmBODj2yRA9duKc7JzcPCGxdv1rUykIqvv_pBxSdZVQINtIlY4YZhmWq9vSVMEEUSWAikGHuMCJW8gG2LuUWeRf5YazjVbBhUb0MuWsKvE7IMePOERmtYL0E7gSiyEA9CpBXuawo9N1iopKXbQHRBoVc8bctvrT_WinNEN7vACZ3ZGdkjvk">
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">chamDX</h1>
+</div>
+<div class="active:scale-95 transition-transform text-primary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-32 px-margin-mobile max-w-2xl mx-auto w-full">
+<!-- Digital Resident ID Section -->
+<section class="mb-lg">
+<div class="premium-id-mesh rounded-xl p-md text-white shadow-2xl relative overflow-hidden flex flex-col gap-md">
+<!-- ID Background Decoration -->
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-secondary/20 rounded-full blur-3xl"></div>
+<div class="flex justify-between items-start z-10">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm opacity-70">DIGITAL RESIDENT ID</span>
+<h2 class="font-headline-md text-headline-md mt-xs">Marcus Adebayo</h2>
+</div>
+<div class="bg-white/10 backdrop-blur-md p-2 rounded-lg border border-white/20">
+<img alt="Resident QR Code" class="w-16 h-16 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOVsNsVuc8mB_lH2VE6H8FXP4NyuWyQXAgfwirrQC8i2fqu7NG28TJnWYidT0NfF7fO_964ZA8zQS-6ecgdA8bM0PXZKJgEaoGTUAtDdgh0TYk7VPO6mkxwDsxoDe_H3ndasW5e6ryMTUideyw5UVEy4ykS91q19sCZfuTd7Eok35YXMNHHAC1kB-yDm_EyoKnJsfYH-3B3jtOH9jS2vhZ2u0ZLx3qktxIvFCTp0j673zUWl9uLIikVQCW_5RMdP0P9sxklUnkZ-M">
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md z-10 border-t border-white/10 pt-md">
+<div>
+<span class="font-label-sm text-label-sm opacity-60">LOCATION</span>
+<p class="font-title-lg text-title-lg">Block 4, Villa 12</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm opacity-60">STATUS</span>
+<div class="flex items-center justify-end gap-xs">
+<span class="w-2 h-2 bg-secondary-container rounded-full"></span>
+<p class="font-label-md text-label-md text-secondary-container">VERIFIED</p>
+</div>
+</div>
+</div>
+<div class="z-10 flex justify-between items-center opacity-60">
+<span class="font-label-sm text-label-sm">CHAMDX ELITE MEMBER</span>
+<span class="font-label-sm text-label-sm">EXP: 12/26</span>
+</div>
+</div>
+</section>
+<!-- Family Members Section -->
+<section class="mb-lg">
+<div class="flex justify-between items-end mb-md">
+<h3 class="font-title-lg text-title-lg text-primary">Family Members</h3>
+<button class="text-secondary font-label-md text-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined !text-[18px]" data-icon="add_circle">add_circle</span>
+                    Add Member
+                </button>
+</div>
+<div class="grid grid-cols-1 gap-base">
+<div class="glass-card rounded-xl p-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-primary/5" data-alt="A portrait of a cheerful African woman in a light-filled living room. Her presence suggests a warm, secure family environment within an upscale gated community. The image is crisp with soft bokeh backgrounds and high-end photographic quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnMJzRhx90aSDWes9q75gVFJ4iT8G1nR6N_eX66GD6dBOkfBj_GOzQcMp98EBP-8qsXW0rRPqVZdiE9HKsWfpGBGEDBdbVf5NpuE4nZSFfMZMhSUpz1o3mnlWBnTwNcDh38ifi9nLlXgiTU5JCEbXV_xsC1EXBMgBLoWDIQ7k8qXUS5nhO2bfPDa3B8KP1VOvNOKAD02iZ7YaCWZ2YE8IoN99MY3-1aToHmoirezFBZ--IQmE7JDMvIgE0qQX6_hhMauzeIqxhbNk">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Sarah Adebayo</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Spouse • Primary</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="glass-card rounded-xl p-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="child_care">child_care</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Tunde Adebayo</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Child • Dependent</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Settings Menu -->
+<section class="mb-lg">
+<h3 class="font-title-lg text-title-lg text-primary mb-md">Estate Settings</h3>
+<div class="bg-surface-container rounded-xl overflow-hidden divide-y divide-white/20 shadow-sm border border-white/10">
+<!-- Setting Item 1 -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-variant/30 transition-colors">
+<div class="flex items-center gap-md">
+<div class="text-primary-container">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</div>
+<div class="text-left">
+<p class="font-label-md text-label-md text-on-surface">Personal Information</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Update identity and contact details</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="arrow_forward_ios" style="font-size: 14px;">arrow_forward_ios</span>
+</button>
+<!-- Setting Item 2 -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-variant/30 transition-colors">
+<div class="flex items-center gap-md">
+<div class="text-primary-container">
+<span class="material-symbols-outlined" data-icon="palette">palette</span>
+</div>
+<div class="text-left">
+<p class="font-label-md text-label-md text-on-surface">Theme Switch</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Toggle light and dark aesthetics</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-outline font-label-sm">
+<span class="">Light</span>
+<span class="material-symbols-outlined" data-icon="toggle_on">toggle_on</span>
+</div>
+</button>
+<!-- Setting Item 3 -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-variant/30 transition-colors">
+<div class="flex items-center gap-md">
+<div class="text-primary-container">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+<div class="text-left">
+<p class="font-label-md text-label-md text-on-surface">Security Preferences</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Manage Biometrics and PIN access</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="arrow_forward_ios" style="font-size: 14px;">arrow_forward_ios</span>
+</button>
+<!-- Setting Item 4 -->
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-variant/30 transition-colors">
+<div class="flex items-center gap-md">
+<div class="text-primary-container">
+<span class="material-symbols-outlined" data-icon="devices">devices</span>
+</div>
+<div class="text-left">
+<p class="font-label-md text-label-md text-on-surface">Connected Devices</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Manage smart home and gate access</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="arrow_forward_ios" style="font-size: 14px;">arrow_forward_ios</span>
+</button>
+</div>
+</section>
+<!-- Logout Action -->
+<button class="w-full flex items-center justify-center gap-sm p-md rounded-xl text-error font-title-lg border-2 border-error/10 bg-error/5 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+            Sign Out
+        </button>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-margin-mobile py-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+
+
+</body></html>

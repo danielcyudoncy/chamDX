@@ -1,0 +1,304 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dde1ff",
+                    "outline": "#767680",
+                    "on-background": "#1b1b1f",
+                    "on-tertiary-container": "#d08500",
+                    "on-surface-variant": "#45464f",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#271500",
+                    "on-primary-fixed": "#091649",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#432800",
+                    "outline-variant": "#c6c5d0",
+                    "surface-container-low": "#f5f2f8",
+                    "primary": "#061447",
+                    "secondary": "#006c49",
+                    "on-primary-fixed-variant": "#384377",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container": "#efedf2",
+                    "on-primary-container": "#8792cb",
+                    "inverse-primary": "#b8c3ff",
+                    "on-surface": "#1b1b1f",
+                    "surface-variant": "#e4e1e7",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "inverse-on-surface": "#f2f0f5",
+                    "surface-dim": "#dbd9de",
+                    "primary-container": "#1e2a5c",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fbf8fd",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#303034",
+                    "secondary-container": "#6cf8bb",
+                    "surface-tint": "#505b90",
+                    "surface": "#fbf8fd",
+                    "surface-container-highest": "#e4e1e7",
+                    "on-secondary-container": "#00714d",
+                    "primary-fixed-dim": "#b8c3ff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae7ec",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-fixed": "#2a1700",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-bright": "#fbf8fd",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "base": "8px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "lg": "40px",
+                    "xl": "64px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "title-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base md:px-margin-desktop">
+<div class="flex items-center gap-sm"><button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform mr-xs">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a person with a warm, confident expression in a clean, modern studio setting. The lighting is soft and high-key, creating a premium light-mode aesthetic that aligns with a sophisticated gated community management app. The background is a soft, neutral grey to keep the focus on the user's friendly and trustworthy persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOXfCjxzCynyTWgo78x9KRg1qpHdo2BJy87USav6cx1z4hhN-f-vI_rbzkz0Ov78SKN52tawFIwjw7J4VlHDl2o0ZFCLUFIW6YPyRYUMTb4QcFWAt-kBjQUeKhzSl4ZMD4OJyCKDjQBDpbcjkxOJENgR3DVvc1y-iHiB0namLEPmoz22b4VUkyE0zdCd4D0jhPIijCgAGyDNkyH6GabTOek4G2nUYz3EvN0rVx6d6GZPr3Ow5pNK6Gv5dzuVwmRZGmGP6LirCi_oc">
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">Settings</h1>
+</div>
+<div class="flex items-center gap-sm"><button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform mr-xs">
+
+</button>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto space-y-md">
+<!-- Profile Quick Access (Glass Card) -->
+<section class="glass-card rounded-xl p-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl" data-icon="person">person</span>
+</div>
+<div>
+<h2 class="font-title-lg text-title-lg text-primary">Tunde Adebayo</h2>
+<p class="text-on-surface-variant font-label-md text-label-md">Resident • Victoria Garden City</p>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md hover:opacity-90 transition-opacity">
+                    Edit Profile
+                </button>
+</div>
+</section>
+<!-- Notification Preferences -->
+<section class="space-y-sm">
+<h3 class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-xs">Preferences</h3>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden">
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="notifications_active">notifications_active</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Push Notifications</p>
+<p class="text-label-sm text-on-surface-variant">Alerts for visitors and community updates</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-md border-b border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="dark_mode">dark_mode</span>
+<p class="font-body-md text-body-md text-on-surface">Dark Mode</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="language">language</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Language</p>
+<p class="text-label-sm text-on-surface-variant">English, Yoruba, Hausa, Igbo</p>
+</div>
+</div>
+<button class="flex items-center text-primary font-label-md">
+                        English <span class="material-symbols-outlined ml-xs">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Security & Privacy -->
+<section class="space-y-sm">
+<h3 class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-xs">Security &amp; Privacy</h3>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden">
+<div class="flex items-center justify-between p-md border-b border-outline-variant/20 hover:bg-surface-variant/10 cursor-pointer transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+<p class="font-body-md text-body-md text-on-surface">Password &amp; Security</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<div class="flex items-center justify-between p-md border-b border-outline-variant/20 hover:bg-surface-variant/10 cursor-pointer transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="fingerprint">fingerprint</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Biometrics</p>
+<p class="text-label-sm text-on-surface-variant">Enabled for fast login</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-variant rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-md hover:bg-surface-variant/10 cursor-pointer transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<p class="font-body-md text-body-md text-on-surface">Privacy Settings</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Smart Home -->
+<section class="space-y-sm">
+<div class="flex justify-between items-end px-xs">
+<h3 class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Smart Home</h3>
+<button class="text-secondary font-label-sm">+ Add Device</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+<!-- Device 1 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="door_front">door_front</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Front Door Lock</p>
+<span class="inline-flex items-center text-[10px] bg-secondary/10 text-secondary px-2 py-0.5 rounded-full font-bold">CONNECTED</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">settings</span>
+</div>
+<!-- Device 2 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="videocam">videocam</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Porch Camera</p>
+<span class="inline-flex items-center text-[10px] bg-secondary/10 text-secondary px-2 py-0.5 rounded-full font-bold">LIVE</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">settings</span>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="pt-md">
+<button class="w-full p-md bg-error/5 text-error border border-error/20 rounded-xl font-title-lg flex items-center justify-center gap-sm hover:bg-error/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </button>
+<p class="text-center text-label-sm text-outline mt-md">App Version 2.4.0 (chamDX-Production)</p>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-margin-mobile py-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all cursor-pointer active:scale-90">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+
+
+</body></html>

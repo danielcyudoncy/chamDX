@@ -1,0 +1,262 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#dde1ff",
+                      "outline": "#767680",
+                      "on-background": "#1b1b1f",
+                      "on-tertiary-container": "#d08500",
+                      "on-surface-variant": "#45464f",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#271500",
+                      "on-primary-fixed": "#091649",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#432800",
+                      "outline-variant": "#c6c5d0",
+                      "surface-container-low": "#f5f2f8",
+                      "primary": "#061447",
+                      "secondary": "#006c49",
+                      "on-primary-fixed-variant": "#384377",
+                      "on-secondary-fixed-variant": "#005236",
+                      "surface-container": "#efedf2",
+                      "on-primary-container": "#8792cb",
+                      "inverse-primary": "#b8c3ff",
+                      "on-surface": "#1b1b1f",
+                      "surface-variant": "#e4e1e7",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "inverse-on-surface": "#f2f0f5",
+                      "surface-dim": "#dbd9de",
+                      "primary-container": "#1e2a5c",
+                      "on-tertiary": "#ffffff",
+                      "background": "#fbf8fd",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#303034",
+                      "secondary-container": "#6cf8bb",
+                      "surface-tint": "#505b90",
+                      "surface": "#fbf8fd",
+                      "surface-container-highest": "#e4e1e7",
+                      "on-secondary-container": "#00714d",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#eae7ec",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-tertiary-fixed": "#2a1700",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface-bright": "#fbf8fd",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#002113"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "base": "8px",
+                      "md": "24px",
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "lg": "40px",
+                      "xl": "64px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "title-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary text-on-primary">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 dark:bg-primary-container/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base">
+<div class="flex items-center gap-base"><button class="mr-1 p-1 hover:bg-white/10 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">menu</span>
+</button>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">qr_code_scanner</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary dark:text-primary-fixed">chamDX</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a security supervisor wearing a crisp dark uniform in a high-tech security operations center. The background features blurred monitors with data streams, reflecting a premium corporate security environment. The lighting is focused and cinematic, highlighting reliability and authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi-hqZ-ZJObIsEJiMLdmrSbMF033eWeA-HToCojktEtLA1QjX64KMaFyrOcU7n4c8kHlnEPdd5ZJRzHacKdIsjS7V2XnubahWgSmfgbyzRLOh-wfQDunVdBUYXHEvbfMGmJxJPtnT1cXI9EM4AFcSGappFRHgH8qq00pk3rw1rDvtnHuYltldqhcfkB5ARDh6ciYONoVt7Sf4sDai8bMOqwGmOUmZhDc-_DPQg5HVfUJ9zweJGPd-1rxjATi6j28dU2AYPfk1__qA">
+</div>
+</div>
+</header>
+<main class="pt-20 pb-28 min-h-screen px-margin-mobile">
+<!-- Camera Viewport Container -->
+<div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-black shadow-2xl border border-white/10 mt-base">
+<!-- Simulated Camera Feed -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="A POV shot from a high-definition smartphone camera looking out at a modern gated community entrance at night. The view is framed by a sleek digital interface, showing a dark asphalt road illuminated by warm amber streetlights and the silhouette of a futuristic gatehouse. The atmosphere is quiet, secure, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJIpOpOnfBO1G00vuTrMpM49JUv_mmQqBofo-9vP5NM6dryu9Dbq55KG-sE_XuSR7gW3GbIRfSTsIbDp_bZDT7r4eX0Q56uz6rkiZZSXrC7B1a_D0jxDwRPW0ZNTRaZG2KAZ5QRH6sYKnAD0OFusL9M8RbLxm0-ismMzwLMoz38PEXiVCjggzog6duh1Nan-Dtv5YszX2Ba9N8YFiW24ujR2YGkIn7c8qFnlxen8aYv_6KQltjOEH7iLR-fM1FJBVkSqylRrFm-e4">
+</div>
+<!-- Scanning Frame Overlay -->
+<div class="absolute inset-0 flex items-center justify-center z-10">
+<div class="w-64 h-64 relative">
+<!-- Corners -->
+<div class="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-secondary-fixed rounded-tl-lg"></div>
+<div class="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-secondary-fixed rounded-tr-lg"></div>
+<div class="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-secondary-fixed rounded-bl-lg"></div>
+<div class="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-secondary-fixed rounded-br-lg"></div>
+<!-- Animated Scan Line (Stylized via CSS) -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-secondary-fixed to-transparent opacity-80 shadow-[0_0_15px_rgba(78,222,163,0.8)]"></div>
+</div>
+</div>
+<!-- Controls Overlay -->
+<div class="absolute bottom-md left-0 w-full px-md flex justify-between items-center z-20">
+<button class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 flex items-center justify-center text-white active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">flashlight_on</span>
+</button>
+<div class="bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-2 rounded-full">
+<span class="font-label-md text-label-md text-white">Align QR code within frame</span>
+</div>
+<button class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 flex items-center justify-center text-white active:scale-90 transition-transform">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+</div>
+</div>
+<!-- Manual Entry Section -->
+<div class="mt-gutter">
+<div class="bg-primary-container p-md rounded-xl border border-white/10 shadow-lg">
+<label class="font-label-md text-label-md text-on-primary-container mb-sm block">Manual Access Code</label>
+<div class="flex gap-sm">
+<input class="flex-grow bg-white/5 border border-outline/30 rounded-lg px-md py-sm text-white placeholder:text-outline focus:ring-2 focus:ring-secondary-fixed focus:border-transparent outline-none font-body-md text-body-md" placeholder="Enter 6-digit code" type="text">
+<button class="bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md px-md py-sm rounded-lg active:scale-95 transition-transform">VERIFY</button>
+</div>
+</div>
+</div>
+<!-- Recent Logs Section -->
+<div class="mt-gutter pb-xl">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-headline-md text-primary-fixed">Recent Entries</h2>
+<button class="text-secondary-fixed font-label-sm text-label-sm hover:underline">View All</button>
+</div>
+<div class="space-y-sm">
+<!-- Log Item 1 -->
+<div class="bg-white/5 backdrop-blur-sm p-md rounded-xl border border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary-fixed">check_circle</span>
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-white">Johnathan Doe</p>
+<p class="font-label-sm text-label-sm text-outline-variant">Resident • Block 4, Villa 12</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-white">14:22</p>
+<p class="font-label-sm text-label-sm text-secondary-fixed">APPROVED</p>
+</div>
+</div>
+<!-- Log Item 2 -->
+<div class="bg-white/5 backdrop-blur-sm p-md rounded-xl border border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">pending</span>
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-white">Sarah Wilson</p>
+<p class="font-label-sm text-label-sm text-outline-variant">Visitor • Delivery Service</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-white">14:15</p>
+<p class="font-label-sm text-label-sm text-tertiary-fixed-dim">EXPECTED</p>
+</div>
+</div>
+<!-- Log Item 3 -->
+<div class="bg-white/5 backdrop-blur-sm p-md rounded-xl border border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error">cancel</span>
+</div>
+<div>
+<p class="font-title-lg text-title-lg text-white">Unknown Vehicle</p>
+<p class="font-label-sm text-label-sm text-outline-variant">ABC-1234 • Gate B</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-white">13:58</p>
+<p class="font-label-sm text-label-sm text-error">DENIED</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Emergency FAB -->
+<button class="fixed bottom-28 right-margin-mobile w-14 h-14 bg-error text-white rounded-full shadow-2xl flex items-center justify-center z-50 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 dark:bg-surface-container-highest/60 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-margin-mobile py-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/20 transition-opacity active:scale-90">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary-fixed dark:text-on-primary-fixed rounded-full px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/20 transition-opacity active:scale-90">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/20 transition-opacity active:scale-90">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-variant/20 transition-opacity active:scale-90">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+
+
+</body></html>

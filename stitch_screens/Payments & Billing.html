@@ -1,0 +1,291 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Payments | chamDX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dde1ff",
+                    "outline": "#767680",
+                    "on-background": "#1b1b1f",
+                    "on-tertiary-container": "#d08500",
+                    "on-surface-variant": "#45464f",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#271500",
+                    "on-primary-fixed": "#091649",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#432800",
+                    "outline-variant": "#c6c5d0",
+                    "surface-container-low": "#f5f2f8",
+                    "primary": "#061447",
+                    "secondary": "#006c49",
+                    "on-primary-fixed-variant": "#384377",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container": "#efedf2",
+                    "on-primary-container": "#8792cb",
+                    "inverse-primary": "#b8c3ff",
+                    "on-surface": "#1b1b1f",
+                    "surface-variant": "#e4e1e7",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "inverse-on-surface": "#f2f0f5",
+                    "surface-dim": "#dbd9de",
+                    "primary-container": "#1e2a5c",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fbf8fd",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#303034",
+                    "secondary-container": "#6cf8bb",
+                    "surface-tint": "#505b90",
+                    "surface": "#fbf8fd",
+                    "surface-container-highest": "#e4e1e7",
+                    "on-secondary-container": "#00714d",
+                    "primary-fixed-dim": "#b8c3ff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae7ec",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-fixed": "#2a1700",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-bright": "#fbf8fd",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "base": "8px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "lg": "40px",
+                    "xl": "64px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "title-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .premium-shadow {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base">
+<div class="flex items-center gap-sm"><button class="active:scale-95 transition-transform hover:opacity-80 transition-opacity text-on-surface-variant">
+    <span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional and clean portrait of a modern estate resident with a friendly expression. The background is a soft-focus architectural setting of a high-end gated community in Lagos, Nigeria. The lighting is natural and bright, emphasizing a premium light-mode aesthetic with crisp details and a warm, inviting atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8t-T-uUiNqe4uIqo37fepLzAHeZERAD9zRdsTw-KdDDIBO-i0ARRK99GR8CZZYspkGJg-YTzAZlzT8iw1-h1Ncg_LcYU0yPHoIZsUHGsaaUQcGw-ujUh0DiXpmkNs-AG5YciufHmeIMO7Qh27zI7HBqezO6VjfBm6iTSWkNxZVSoINZgL6FZpg4aoXZ5AlPI20v2a2Jt7Iyo7-BYKXRZ24x0rxpMXjU2cT02VbdriNqSw4UyVyWZchgA2GKLhBY9Hy7oyD6gSSPA">
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">chamDX</h1>
+<div class="active:scale-95 transition-transform hover:opacity-80 transition-opacity text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile max-w-2xl mx-auto space-y-md">
+<!-- Wallet Card -->
+<div class="relative overflow-hidden rounded-xl bg-primary-container p-md text-on-primary-fixed shadow-lg">
+<div class="absolute top-0 right-0 -mr-12 -mt-12 w-48 h-48 bg-primary-fixed/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<p class="font-label-md text-label-md opacity-80 mb-xs">Available Balance</p>
+<h2 class="font-display-lg text-display-lg text-white mb-md">₦450,230.00</h2>
+<div class="flex gap-sm">
+<button class="flex-1 bg-white text-primary py-sm rounded-lg font-label-md flex items-center justify-center gap-xs active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_circle">add_circle</span>
+                        Top Up
+                    </button>
+<button class="flex-1 bg-white/10 border border-white/20 text-white py-sm rounded-lg font-label-md flex items-center justify-center gap-xs active:scale-95 transition-transform backdrop-blur-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+                        Transfer
+                    </button>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<section>
+<h3 class="font-title-lg text-title-lg mb-sm">Quick Payments</h3>
+<div class="grid grid-cols-2 gap-sm">
+<div class="glass-card p-md rounded-xl flex flex-col items-start gap-sm hover:bg-surface-container transition-colors cursor-pointer active:scale-95 transition-transform">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Service Charge</p>
+<p class="text-label-sm text-outline">Due in 5 days</p>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl flex flex-col items-start gap-sm hover:bg-surface-container transition-colors cursor-pointer active:scale-95 transition-transform">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Facility Booking</p>
+<p class="text-label-sm text-outline">Tennis Court / Gym</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Spending Chart Simulation -->
+<section class="glass-card rounded-xl p-md">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-title-lg text-title-lg">Monthly Spending</h3>
+<span class="text-label-sm text-secondary bg-secondary-container px-sm py-1 rounded-full">+12% vs last month</span>
+</div>
+<div class="flex items-end justify-between h-32 gap-xs px-2">
+<div class="w-full bg-primary-fixed/20 rounded-t-sm h-1/2"></div>
+<div class="w-full bg-primary-fixed/20 rounded-t-sm h-3/4"></div>
+<div class="w-full bg-primary-fixed/20 rounded-t-sm h-2/3"></div>
+<div class="w-full bg-primary-fixed/20 rounded-t-sm h-1/2"></div>
+<div class="w-full bg-primary-fixed/20 rounded-t-sm h-5/6"></div>
+<div class="w-full bg-primary rounded-t-sm h-full"></div>
+</div>
+<div class="flex justify-between mt-sm text-label-sm text-outline">
+<span class="">Jan</span><span class="">Feb</span><span class="">Mar</span><span class="">Apr</span><span class="">May</span><span class="">Jun</span>
+</div>
+</section>
+<!-- Transaction History -->
+<section class="space-y-sm">
+<div class="flex justify-between items-center">
+<h3 class="font-title-lg text-title-lg">Recent Transactions</h3>
+<button class="text-primary font-label-md">View All</button>
+</div>
+<div class="space-y-xs">
+<!-- Tx 1 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-white/10 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="electric_bolt">electric_bolt</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Electricity Utility</p>
+<p class="text-label-sm text-outline">24 Oct, 2023 • 10:45 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">-₦15,000.00</p>
+<span class="text-[10px] uppercase font-bold text-secondary bg-secondary-container/20 px-2 py-0.5 rounded">Success</span>
+</div>
+</div>
+<!-- Tx 2 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-white/10 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="sports_tennis">sports_tennis</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Court Reservation</p>
+<p class="text-label-sm text-outline">22 Oct, 2023 • 04:20 PM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">-₦2,500.00</p>
+<span class="text-[10px] uppercase font-bold text-secondary bg-secondary-container/20 px-2 py-0.5 rounded">Success</span>
+</div>
+</div>
+<!-- Tx 3 -->
+<div class="bg-surface-container-lowest p-md rounded-xl border border-white/10 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Wallet Funding</p>
+<p class="text-label-sm text-outline">20 Oct, 2023 • 09:12 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-secondary">+₦50,000.00</p>
+<span class="text-[10px] uppercase font-bold text-secondary bg-secondary-container/20 px-2 py-0.5 rounded">Success</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Badges -->
+<div class="flex flex-col items-center gap-base py-md opacity-40">
+<p class="text-label-sm uppercase tracking-widest text-outline">Secure payments via</p>
+<div class="flex items-center gap-xl grayscale">
+<img class="h-6 object-contain" data-alt="Logo of Paystack payment processor, rendered in a minimalist grayscale vector style on a clean background. The visual emphasizes reliability and secure digital infrastructure for high-end gated community transactions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYjN04NcpYzmnFzBSRi8pXZvDWuj6brVXIi-gMmZJe3HwhuJnlCHOqD-4HFf3GWFMu16yZvX1kJbCEkKBThozZC-BeXCF98Zz12TeIAg3HBudPIGNeCCrI1-Aoc7eme26iGGQgkx3u1CkvKx9-rpp_y3NAvNurup6BKq6PFVQXdHLN8mXa8qPJVocUecVhYRS1iQLLaFBBOJ6XB564yFvXTa3r4CFx4J6FXnzuNPFN5iylwQg90dehPfCQI8kculfy5gdRhOGRYfA">
+<img class="h-5 object-contain" data-alt="Logo of Flutterwave payment processor, rendered in a clean minimalist grayscale style. The design suggests a modern corporate aesthetic and trusted financial technology, aligning with a premium digital living platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH9Xqi3HSjl8zYKcEnZYbSm1WSgb1oaU97P7torhxDEkj8qdezi8M5su1K0QT6a03aLascSudyXUavcqMrb0vwHLS0nQk9otRsS1nFCgqjYdYvQ5LXbqfcJ7quHFA1rE-myQKDbQ2Vv8b3Nhiahi3H8WIRzMcjgZEZt0XXU31YnyS-GMceTwj_mwH5YoTG_AJLrjCGsfmO6AQJ7aMFSwuc_HM6hpbG59K0jv1fkpnN15IZC5wWfYh4oaKBcy2EPiEYhoDqROvwsPA">
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-margin-mobile py-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<!-- ACTIVE TAB: Payments mapping to closest intent (using home as placeholder if no direct match, but intent-wise, let's assume this page is a sub-section of a larger financial hub, or if home was intended for 'Main', we stick to provided labels) -->
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-sm text-label-sm">Wallet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+
+
+</body></html>

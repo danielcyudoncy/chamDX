@@ -1,0 +1,268 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Estate Selection | chamDX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fbf8fd;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#f2f0f5",
+                      "on-surface": "#1b1b1f",
+                      "on-secondary-container": "#00714d",
+                      "primary": "#061447",
+                      "surface": "#fbf8fd",
+                      "surface-container-high": "#eae7ec",
+                      "primary-container": "#1e2a5c",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "surface-container": "#efedf2",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#432800",
+                      "surface-tint": "#505b90",
+                      "on-secondary-fixed-variant": "#005236",
+                      "inverse-primary": "#b8c3ff",
+                      "on-error": "#ffffff",
+                      "outline": "#767680",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#6cf8bb",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-primary-fixed-variant": "#384377",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#091649",
+                      "on-tertiary-container": "#d08500",
+                      "inverse-surface": "#303034",
+                      "on-secondary-fixed": "#002113",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c6c5d0",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#6ffbbe",
+                      "background": "#fbf8fd",
+                      "on-surface-variant": "#45464f",
+                      "on-primary-container": "#8792cb",
+                      "surface-dim": "#dbd9de",
+                      "surface-variant": "#e4e1e7",
+                      "surface-bright": "#fbf8fd",
+                      "surface-container-low": "#f5f2f8",
+                      "tertiary": "#271500",
+                      "primary-fixed": "#dde1ff",
+                      "on-background": "#1b1b1f",
+                      "surface-container-highest": "#e4e1e7",
+                      "on-tertiary-fixed": "#2a1700",
+                      "secondary": "#006c49"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "48px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "margin-mobile": "16px",
+                      "lg": "40px",
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "xl": "64px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "title-lg": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-24">
+<!-- Top AppBar (from JSON) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-md border-b border-on-surface/10 shadow-sm h-16 flex items-center justify-between px-margin-mobile">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<span class="font-display-lg text-headline-md font-bold text-primary tracking-tight">chamDX</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-white overflow-hidden shadow-sm border border-primary/10">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a resident in a modern, light-filled architectural environment. The lighting is soft and natural, emphasizing a premium and trustworthy persona. The background is a clean, minimalist interior with subtle glass and navy accents that align with the corporate luxury branding of a gated community management app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6pkhoJOSw5EbAvyNniVahNDpIIN1MLk8l1HBkXLSyQp3f609zQnnnEtcqVj_GCeb_DUpVS8F0VMUSGUGHhF89mNAJ85E7j1X8ORaii7VbCh2h22msIroGdOZrD1ANtrprf2qNi75ERQg-QoN739A5k20_M3APdJ1SN33nh1d2SqOwMzZ59geQPWT1tJ5_TH2vaPsS3e1yRn2SWfgcfYOsKBZxVG9u2MJDcL6-4YGLl7LVOmhLN6_W4weCHRPw-X_Qd3qgJsdoMAo">
+</div>
+</nav>
+<main class="pt-24 px-margin-mobile">
+<!-- Search Header -->
+<header class="mb-8">
+<div class="relative">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm font-body-md text-on-surface placeholder-on-surface-variant/60" placeholder="Search for your estate..." type="text">
+</div>
+</header>
+<!-- Nearby Estates Section -->
+<section class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-headline-md text-headline-md text-primary">Nearby Estates</h2>
+<button class="font-label-md text-primary opacity-80">View all</button>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 -mx-margin-mobile px-margin-mobile scrollbar-hide">
+<!-- Card 1 -->
+<div class="flex-shrink-0 w-64 glass-card rounded-xl overflow-hidden shadow-sm border border-white/20">
+<div class="h-40 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A wide shot of Victoria Garden City in Lagos, featuring lush tropical greenery and high-end modern residential villas under a warm, golden hour sun. The architectural style is contemporary and exclusive, with clean lines and premium finishes. The mood is serene, safe, and reflects an aspirational gated community lifestyle with high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA4xPQyXiKuUHOxCbpwmrBJMvIM3XmuFACAUzRnoT9P0AZnsisNl5u3vDrOw78UAcYJvwlr6laRhbhR0MLJKPv_wU8Kess5ykztm_P86ca_ggDac6rxlWITACOKe2hBrmgDFeNLx3-etlnE_ugDJiPpz2E5O4V-iqIx8g0LsroYD5OMkBlDZWmfXnDADh1kZc9bAcIcBIIpXtoe4PXSDNjBAUEQfd76X5Ibf56ZX8hOoiv_9WCYYuAINygnFspBFU3HNceitAPHus">
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="location_on">location_on</span>
+<span class="text-label-sm font-label-sm text-primary">2.4 km</span>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-title-lg text-title-lg text-primary truncate">Victoria Garden City</h3>
+<p class="font-label-md text-on-surface-variant mt-1">Lekki, Lagos</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex-shrink-0 w-64 glass-card rounded-xl overflow-hidden shadow-sm border border-white/20">
+<div class="h-40 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A luxury residence in Lekki County Homes, showcasing a minimalist white facade with large glass windows and manicured gardens. The image captures a bright, airy afternoon in an upscale African suburb. The aesthetic is sophisticated and clean, using a palette of whites, greens, and deep shadows to convey security and premium living." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl14z2hsdzklVv8xwX4rIil0VWf9-1VMuhDNGikgMWCUcHONjTOO3dzXzB9NIJLiYNdCCJAzF97gi5RR5vdq-j9WXpH7KvGlfc9Om3JjBxdjHBKE4P43RkBnskAvQqVqoOEQl7j9s36xMlAxkU6ZceOj346NOvabj3kHsz2Bl9u_kp4mJWg-ObU9n2GRhDj_8QGEhZOUAbN26hr95_f5Y2C-oitu6RRcENQNdsUHLhdwt_FygnO8AQ4PLwWmyHt-7dks8n8gKkgOE">
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="location_on">location_on</span>
+<span class="text-label-sm font-label-sm text-primary">3.8 km</span>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-title-lg text-title-lg text-primary truncate">Lekki County Homes</h3>
+<p class="font-label-md text-on-surface-variant mt-1">Ikota, Lagos</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Estates Section -->
+<section class="mb-12">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Popular Estates</h2>
+<div class="space-y-4">
+<!-- List Item 1 -->
+<div class="flex items-center p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A macro shot of a sleek residential entrance in Nicon Town, featuring polished stone walls and high-tech security gates. The lighting is crisp and modern, emphasizing the premium quality of the estate. The color palette is dominated by deep navy tones and clean neutrals, fitting the chamDX corporate identity perfectly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMn519kaWiLQ8e-bKOhPoYw7-5YE5AuGeu5i5K70JfyjdqzAjHXrDttZDMrhbGhWyPl8az5qURzyTcuVbfEb7M3Xsq7ZiMqxnfOVc1zejl5RJ5zhTlNoh42HXquq-49HyMQYEmzCET3jojt8bnmNWwmwgCLxT6rBITdYTTML1SDXEGYuxk3C3Fzwg4YXjAHabLkPByu4DgjSVe7QT2ruvKBnYc6wCf_7YUQarYrasO5elJCziGoEi6nBRjLj6zH-bhSRp1cW2Pasg">
+</div>
+<div class="ml-4 flex-grow overflow-hidden">
+<div class="flex items-center gap-2">
+<h4 class="font-title-lg text-body-lg font-semibold text-primary truncate">Nicon Town</h4>
+<span class="bg-secondary-container/30 text-secondary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                Verified
+                            </span>
+</div>
+<p class="font-label-md text-on-surface-variant">Lekki Phase 1, Lagos</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- List Item 2 -->
+<div class="flex items-center p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="The elegant main boulevard of Banana Island, Lagos, showing perfectly paved roads, palm trees, and the silhouettes of luxury mansions. The atmosphere is quiet and ultra-exclusive, captured during a bright morning. The visual style is high-contrast and professional, emphasizing the security and prestige of the location." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTpUnFyHHcy0mioJyyW5hd0b-KVXWGOiFVjGuH8i7rLIKeaGvqSpk6Usz2_oZ1x6yzy9uBbVXHlH5w-t9YklcjGr562UEggq93ZQ4ib09EVFgpLAHqdB7HDzyrzZIilG68HNz2YCi28dIcF5u0QsJn3dn2rCH8fGyWg4h2BEENg1fzPb4WafclHlIk-SLX9D4nHB5hZgwt7VcgNCgG70x9sBUzxaYLN019Y605y8ta1GBjwE42cpOjHOmrlGvxGteAYTFtmPmvV9I">
+</div>
+<div class="ml-4 flex-grow overflow-hidden">
+<div class="flex items-center gap-2">
+<h4 class="font-title-lg text-body-lg font-semibold text-primary truncate">Banana Island</h4>
+<span class="bg-secondary-container/30 text-secondary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                Verified
+                            </span>
+</div>
+<p class="font-label-md text-on-surface-variant">Ikoyi, Lagos</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- List Item 3 -->
+<div class="flex items-center p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A contemporary architectural detail of a house in Carlton Gate Estate, showing premium wood cladding and glass railings. The image is bright and focused on the modern textures of high-end property. The mood is sophisticated and clean, perfectly representing a tech-integrated gated community management experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXPknZVOQS0dbvEqivLZLeplPU77GrMA3XovM34UIGrbRuagLv3fDx8QY5SYyW3JbWNl93knPK6RpPQas_qGu6WWfZJaACJPJUAMIC_SyjWXoINDMCP4MMaxJQSv9s7f_YBRQ_tXWZUIvPJE932zf4L6GMOOGfJN4XWpBJyYWzdVTdQc3cHcfXr3W1uzNbYUeYMs4Ll1hsGwlCfQkcF_txr-N0Pf_tuBUFtSI7v8y53SUKiB4-SQGIxZm_QbvE2PFDVqGhBm8tu9s">
+</div>
+<div class="ml-4 flex-grow overflow-hidden">
+<div class="flex items-center gap-2">
+<h4 class="font-title-lg text-body-lg font-semibold text-primary truncate">Carlton Gate Estate</h4>
+<span class="bg-secondary-container/30 text-secondary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                Verified
+                            </span>
+</div>
+<p class="font-label-md text-on-surface-variant">Chevron Drive, Lagos</p>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Help Link -->
+<footer class="text-center py-6">
+<a class="inline-flex items-center gap-2 font-label-md text-primary hover:opacity-80 transition-opacity" href="#">
+                Can't find your estate?
+                <span class="text-secondary font-bold underline">Get help here</span>
+</a>
+</footer>
+</main>
+<!-- Bottom NavBar (from JSON) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] h-20 flex justify-around items-center px-4 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm-mobile">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="font-label-sm text-label-sm-mobile">Estates</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-label-sm text-label-sm-mobile">Visitors</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm-mobile">Settings</span>
+</div>
+</nav>
+</body></html>

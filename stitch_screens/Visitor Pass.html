@@ -1,0 +1,267 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Visitor Pass - chamDX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dde1ff",
+                        "outline": "#767680",
+                        "on-background": "#1b1b1f",
+                        "on-tertiary-container": "#d08500",
+                        "on-surface-variant": "#45464f",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#271500",
+                        "on-primary-fixed": "#091649",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#432800",
+                        "outline-variant": "#c6c5d0",
+                        "surface-container-low": "#f5f2f8",
+                        "primary": "#061447",
+                        "secondary": "#006c49",
+                        "on-primary-fixed-variant": "#384377",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container": "#efedf2",
+                        "on-primary-container": "#8792cb",
+                        "inverse-primary": "#b8c3ff",
+                        "on-surface": "#1b1b1f",
+                        "surface-variant": "#e4e1e7",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "inverse-on-surface": "#f2f0f5",
+                        "surface-dim": "#dbd9de",
+                        "primary-container": "#1e2a5c",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303034",
+                        "secondary-container": "#6cf8bb",
+                        "surface-tint": "#505b90",
+                        "surface": "#fbf8fd",
+                        "surface-container-highest": "#e4e1e7",
+                        "on-secondary-container": "#00714d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae7ec",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed": "#2a1700",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-bright": "#fbf8fd",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002113"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "base": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "title-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .pass-cutout {
+            position: relative;
+        }
+        .pass-cutout::before, .pass-cutout::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: #fbf8fd;
+            border-radius: 50%;
+            bottom: 120px;
+            z-index: 10;
+        }
+        .pass-cutout::before { left: -12px; }
+        .pass-cutout::after { right: -12px; }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 dark:bg-primary-container/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base md:px-margin-desktop">
+<div class="flex items-center gap-sm"><button class="active:scale-95 transition-transform">
+  <span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</button>
+<button class="active:scale-95 transition-transform">
+
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">chamDX</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-M5qROD5S6u5oZs1IP2FQbEZmypAOY_qK4MEtVNQkvupkwdUAqxBSlZBsOcaPpivuGBd9FRbhEcyN_0fLahNN_o07Git7NsAqxqY5-oMpdmcdjFryPCiuDtNkVoxRAROb8UjyxhFsuUWRGZbbzW9LvPn2Px9wgHJ5gG_7lkZ-ywhxILN4q5UUaR6ojLlXabM4TQn8qSuXWp3i2i1mh0evWczriHnkO93ypP8PhCcqdZVvH77CYMUFpbXCHRG31N45JMxERnUSBYQ">
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-lg mx-auto">
+<!-- Success Header -->
+<div class="flex flex-col items-center mb-lg text-center">
+<div class="w-16 h-16 bg-secondary-container rounded-full flex items-center justify-center mb-md shadow-lg border-4 border-white">
+<span class="material-symbols-outlined text-on-secondary-container text-4xl" data-icon="check_circle" style="font-variation-settings: &quot;FILL&quot; 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-xs">Pass Generated</h2>
+<p class="font-body-md text-on-surface-variant">Your visitor is authorized for entry.</p>
+</div>
+<!-- Glassmorphic Pass Card -->
+<div class="glass-card pass-cutout rounded-xl shadow-2xl overflow-hidden mb-lg">
+<!-- Card Header -->
+<div class="p-md bg-primary-container text-white flex justify-between items-center">
+<div>
+<p class="font-label-sm text-primary-fixed uppercase tracking-wider mb-xs">Entry Authorization</p>
+<p class="font-title-lg text-title-lg">Visitor Pass</p>
+</div>
+<div class="text-right">
+<span class="material-symbols-outlined text-primary-fixed text-4xl" data-icon="shield">shield</span>
+</div>
+</div>
+<!-- Card Content -->
+<div class="p-md flex flex-col items-center">
+<!-- QR Code Section -->
+<div class="bg-white p-base rounded-lg shadow-sm mb-md">
+<img alt="Visitor Access QR Code" class="w-48 h-48" data-alt="A clean and professional digital QR code rendered in a high-contrast black and white square format. The QR code is centered on a textured white card background with soft rounded corners. The lighting is bright and even, evoking a secure and modern technology-driven environment within a luxury gated community software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvlbUmPEm-6Yi40fIqVeGEUCkSk80-e7xSffVQ-aRP15jAlvAPB_IO4fOgrpPO5TQkSQqmrBN76y_PkuY22wHOIc7vAz5mOuItlS21SpzvUFcnliE6iD4xvLcV-vLsoa8OI-bHQnFqkIrzkLMjb4NMGtvMRuHETUB2lBRAg5Z5GwuunL-XRQz4iOwjw9DPWIaG7QSreyJEyozwLGAL1_f_kVY3wS1rLvBTSfZp148C_3iTo5LEeIYJvk55qzRQ0Ozbw1SzUd9NzJk">
+</div>
+<!-- Access Code -->
+<div class="text-center mb-lg">
+<p class="font-label-sm text-outline mb-xs uppercase tracking-widest">Access Code</p>
+<p class="font-display-lg text-display-lg text-primary tracking-widest">524-910</p>
+</div>
+<!-- Divider Line for Cutouts -->
+<div class="w-full border-t-2 border-dashed border-outline-variant/30 mb-lg"></div>
+<!-- Details Grid -->
+<div class="w-full grid grid-cols-2 gap-y-md gap-x-gutter">
+<div>
+<p class="font-label-sm text-outline uppercase tracking-wider mb-xs">Visitor Name</p>
+<p class="font-body-md font-bold text-primary">Maxwell Thorne</p>
+</div>
+<div>
+<p class="font-label-sm text-outline uppercase tracking-wider mb-xs">Vehicle Plate</p>
+<p class="font-body-md font-bold text-primary">ZAB 4920 CC</p>
+</div>
+<div>
+<p class="font-label-sm text-outline uppercase tracking-wider mb-xs">Visit Date</p>
+<p class="font-body-md font-bold text-primary">Oct 24, 2023</p>
+</div>
+<div>
+<p class="font-label-sm text-outline uppercase tracking-wider mb-xs">Arrival Time</p>
+<p class="font-body-md font-bold text-primary">02:30 PM</p>
+</div>
+<div class="col-span-2">
+<p class="font-label-sm text-outline uppercase tracking-wider mb-xs">Purpose</p>
+<p class="font-body-md font-bold text-primary">Property Maintenance - Electrician</p>
+</div>
+</div>
+</div>
+<!-- Security Footer -->
+<div class="px-md py-sm bg-surface-container-high/50 flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="lock">lock</span>
+<p class="font-label-sm text-on-surface-variant">Verified by chamDX Estate Security</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-sm">
+<button class="w-full bg-primary-container text-white py-md rounded-lg font-label-md flex items-center justify-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all shadow-md">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+                Share Pass
+            </button>
+<button class="w-full bg-[#25D366] text-white py-md rounded-lg font-label-md flex items-center justify-center gap-sm hover:opacity-90 active:scale-[0.98] transition-all shadow-md">
+<img alt="WhatsApp Icon" class="w-5 h-5 brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6B6tDzp20RluUTFqkbc7Jq9qlxIoKzvaKfdY6EQx8HKasu79_hCVXvAiy9GJCtM0OGa2KZhsGAENHEZALaNMqDopkh0r5-_BhF79DZ0HYPd1YgFBSKayE_r6_UKbCQlNdlwcS1y3we7eXMM-f192QRA7C1r7TtL-eMgsk0x2NZQePJY3G0SUuUNc4RpxqSqya0zvImSV-T_LDIT8lyPcnmAE8cgS4lyIZCTSR9FUJPoMvyoLPXRaTDrJGHefC2dVVlrESbSg-Ngw">
+                WhatsApp Share
+            </button>
+<button class="w-full border border-outline-variant text-primary py-md rounded-lg font-label-md flex items-center justify-center gap-sm hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                Save to Gallery
+            </button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg rounded-t-xl flex justify-around items-center px-margin-mobile py-sm md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary-fixed dark:text-on-primary-fixed rounded-full px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="badge" style="font-variation-settings: &quot;FILL&quot; 1;">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<!-- Background Decorative Element -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-40">
+<div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary-fixed rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[0%] left-[-10%] w-[40%] h-[40%] bg-secondary-container rounded-full blur-[100px]"></div>
+</div>
+
+
+</body></html>

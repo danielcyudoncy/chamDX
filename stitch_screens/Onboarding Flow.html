@@ -1,0 +1,184 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Welcome to chamDX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dde1ff",
+                        "outline": "#767680",
+                        "on-background": "#1b1b1f",
+                        "on-tertiary-container": "#d08500",
+                        "on-surface-variant": "#45464f",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#271500",
+                        "on-primary-fixed": "#091649",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#432800",
+                        "outline-variant": "#c6c5d0",
+                        "surface-container-low": "#f5f2f8",
+                        "primary": "#061447",
+                        "secondary": "#006c49",
+                        "on-primary-fixed-variant": "#384377",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container": "#efedf2",
+                        "on-primary-container": "#8792cb",
+                        "inverse-primary": "#b8c3ff",
+                        "on-surface": "#1b1b1f",
+                        "surface-variant": "#e4e1e7",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "inverse-on-surface": "#f2f0f5",
+                        "surface-dim": "#dbd9de",
+                        "primary-container": "#1e2a5c",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303034",
+                        "secondary-container": "#6cf8bb",
+                        "surface-tint": "#505b90",
+                        "surface": "#fbf8fd",
+                        "surface-container-highest": "#e4e1e7",
+                        "on-secondary-container": "#00714d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae7ec",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed": "#2a1700",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-bright": "#fbf8fd",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002113"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "base": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "title-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .bg-mesh {
+            background-color: #fbf8fd;
+            background-image: radial-gradient(at 0% 0%, rgba(30, 42, 92, 0.05) 0px, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(0, 108, 73, 0.05) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-mesh font-body-md text-on-background min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation Bar (Branded) -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">chamDX</div>
+<button class="text-on-surface-variant font-label-md px-4 py-2 hover:opacity-80 transition-opacity active:scale-95">Skip</button>
+</header>
+<main class="flex-grow pt-xl pb-lg px-margin-mobile flex flex-col items-center justify-center">
+<!-- Bento-inspired Onboarding Layout -->
+<div class="max-w-md w-full grid grid-cols-1 gap-gutter">
+<!-- Slide 1: Visitor Management (Featured) -->
+<section class="glass-card rounded-xl p-md shadow-lg flex flex-col items-center text-center">
+<div class="w-full aspect-square mb-lg rounded-lg overflow-hidden relative">
+<img alt="Visitor Management" class="w-full h-full object-cover" data-alt="A premium high-tech digital interface showing a visitor check-in screen for a luxury gated estate. The visual style is ultra-modern with soft blue and deep navy accents, featuring a clean white background and glassmorphic elements. The lighting is bright and high-key, evoking a sense of security and professional stewardship in a modern African architectural setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFgr2STOrm3LjILmUF8qehMBOdb6CxHdyagyZPggUQlopxZhnu-5QgyrT_6OF4jGQR2MzddHAGxEDAH91TrLrJniN3Z6PfCYJ4-hGnHaHtyxP4ocyXv6vbAk9qAP39J9Y3LS8i7Ph3yGwzkYrOz1KcW9JdVjwamHzCEi7xYKyeOlhLPQfmWqu6be-2ss8kd1xOxEW4iWHlN5QXirp6sXx3MDtLYvs0S1Z3Yl6D51qVXJt-EB_IZ4pSh1tBGPFzFnxNutpxjRYZmnk">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-sm">Visitor Management</h2>
+<p class="font-body-md text-on-surface-variant mb-md px-sm">
+                    Pre-authorize your guests with secure access codes for a seamless entry experience into the estate.
+                </p>
+<!-- Progress Indicators -->
+<div class="flex gap-xs mb-lg">
+<div class="h-1.5 w-8 rounded-full bg-primary"></div>
+<div class="h-1.5 w-2 rounded-full bg-outline-variant"></div>
+<div class="h-1.5 w-2 rounded-full bg-outline-variant"></div>
+</div>
+</section>
+<!-- Grid Preview of Other Slides (Asymmetric Layout) -->
+<div class="grid grid-cols-2 gap-gutter">
+<!-- Community Engagement Preview -->
+<div class="glass-card rounded-xl p-sm shadow-sm flex flex-col opacity-60">
+<div class="w-full aspect-video rounded-lg mb-base overflow-hidden">
+<img alt="Community" class="w-full h-full object-cover" data-alt="A vibrant digital community hub interface showing group discussions and estate events. The style is clean and spacious with emerald green secondary color accents. Soft ambient lighting illuminates a diverse group of tech-savvy residents interacting in a premium communal workspace, maintaining a high-end corporate yet welcoming atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNjQr_TKrRp1gWVKnR71bB2kdiTCEFPLcCOrSvxOfOY68c0Iq1bikRzIF_-e17UpQGAHipZzcvPZ-dotrNZs64o_JY4QST-qHmNPp20BCw1CoiAo6o8tDlewIDEVDNXLJTS7VJ2i-PpwvoAnH4A7owHrdBJTdDEOYj3BLEoMabfCBMnwfdB5EYmNV5RMTRP9YJJqeGokSFG0aPdYnZYxYnY8w1sV8uQJvCEp6RQpvYg8lwD6QrEcL7jGakgUIR3e6mAgC7fjfelDE">
+</div>
+<h3 class="font-label-md text-primary truncate">Community Hub</h3>
+</div>
+<!-- Security Preview -->
+<div class="glass-card rounded-xl p-sm shadow-sm flex flex-col opacity-60">
+<div class="w-full aspect-video rounded-lg mb-base overflow-hidden">
+<img alt="Security" class="w-full h-full object-cover" data-alt="A futuristic security monitoring dashboard with high-tech data visualizations and estate maps. The palette is dominated by deep navy blues and sharp focus highlights. The lighting is cool and sophisticated, showcasing 24/7 digital stewardship and absolute safety for a modern gated residential community." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJA4TP30bd4dZ_vWITtj_5dJ0vZ8EPNb4NqyWFE4PaoAZp2gzF88ym7vQPmwtID4YJF-OJWIsxyjhqT6mtXGnWy9dQ_UoUazhL9xfKGXZQjQXEdlDqXMWtkVnXr3AFtGxM0PZrE1DFUOcVBtaJaQo_QIDteNlbnJ5zogtBy7Ws28rAXcfhWkgEJ6eux9bS9pCd6Xl-Ka8M2IgFR7_iRAecx98ptwHGTLa2kwxGqwUp9dgR1LBvCXB2VW4juR0kRTy4JeljtmAgAds">
+</div>
+<h3 class="font-label-md text-primary truncate">Smart Security</h3>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area -->
+<footer class="fixed bottom-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg px-margin-mobile py-md">
+<div class="max-w-md mx-auto flex flex-col gap-base">
+<button class="w-full bg-primary-container text-on-primary text-body-lg font-bold py-md rounded-lg shadow-sm hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-base">
+                Continue
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center text-label-sm text-outline">
+                Step 1 of 3: Secure Your Entry
+            </p>
+</div>
+</footer>
+<!-- Invisible background decorative elements for Glassmorphism effect -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[100px] -z-10"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[100px] -z-10"></div>
+</body></html>

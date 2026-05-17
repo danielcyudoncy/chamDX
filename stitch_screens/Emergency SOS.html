@@ -1,0 +1,250 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dde1ff",
+                    "outline": "#767680",
+                    "on-background": "#1b1b1f",
+                    "on-tertiary-container": "#d08500",
+                    "on-surface-variant": "#45464f",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#271500",
+                    "on-primary-fixed": "#091649",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#432800",
+                    "outline-variant": "#c6c5d0",
+                    "surface-container-low": "#f5f2f8",
+                    "primary": "#061447",
+                    "secondary": "#006c49",
+                    "on-primary-fixed-variant": "#384377",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container": "#efedf2",
+                    "on-primary-container": "#8792cb",
+                    "inverse-primary": "#b8c3ff",
+                    "on-surface": "#1b1b1f",
+                    "surface-variant": "#e4e1e7",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "inverse-on-surface": "#f2f0f5",
+                    "surface-dim": "#dbd9de",
+                    "primary-container": "#1e2a5c",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fbf8fd",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#303034",
+                    "secondary-container": "#6cf8bb",
+                    "surface-tint": "#505b90",
+                    "surface": "#fbf8fd",
+                    "surface-container-highest": "#e4e1e7",
+                    "on-secondary-container": "#00714d",
+                    "primary-fixed-dim": "#b8c3ff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae7ec",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-fixed": "#2a1700",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-bright": "#fbf8fd",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "base": "8px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "lg": "40px",
+                    "xl": "64px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "title-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .sos-pulse {
+            box-shadow: 0 0 0 0 rgba(186, 26, 26, 0.7);
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(186, 26, 26, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 40px rgba(186, 26, 26, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(186, 26, 26, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#0c0c0f] text-on-surface font-body-md overflow-x-hidden min-h-screen">
+<!-- Top Navigation Anchor (Manual Suppression of BottomNav due to Transactional focus) -->
+<header class="fixed top-0 w-full z-50 bg-[#0c0c0f]/80 backdrop-blur-xl border-b border-white/10 flex items-center px-margin-mobile py-base grid grid-cols-[auto_1fr_auto]"><button class="bg-surface-container-highest/20 p-2 rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+</button>
+<div class="flex items-center gap-base justify-center">
+<span class="material-symbols-outlined text-error font-bold">emergency_home</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-error tracking-tight">chamDX</h1>
+</div>
+<button class="bg-surface-container-highest/20 p-2 rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</header>
+<main class="pt-24 pb-12 px-margin-mobile flex flex-col items-center gap-lg max-w-lg mx-auto">
+<!-- Header Messaging -->
+<div class="text-center space-y-xs">
+<h2 class="font-headline-lg text-headline-lg text-white">Emergency Center</h2>
+<p class="font-body-md text-outline-variant">Hold the button for 3 seconds to alert security</p>
+</div>
+<!-- Central SOS Button -->
+<div class="relative flex items-center justify-center py-lg">
+<div class="absolute w-72 h-72 rounded-full border border-error/20 animate-ping"></div>
+<button class="sos-pulse relative w-56 h-56 rounded-full bg-error flex flex-col items-center justify-center text-white active:scale-90 transition-transform shadow-[0_0_60px_-15px_rgba(186,26,26,0.8)] z-10">
+<span class="material-symbols-outlined text-[64px]" style="font-variation-settings: 'FILL' 1;">emergency</span>
+<span class="font-display-lg text-display-lg font-black tracking-widest mt-xs">SOS</span>
+</button>
+</div>
+<!-- Emergency Categories -->
+<div class="w-full grid grid-cols-3 gap-sm">
+<button class="glass-card flex flex-col items-center justify-center py-md rounded-xl active:scale-95 transition-all hover:bg-white/10">
+<span class="material-symbols-outlined text-error mb-2">local_police</span>
+<span class="font-label-sm text-label-sm text-white">Security</span>
+</button>
+<button class="glass-card flex flex-col items-center justify-center py-md rounded-xl active:scale-95 transition-all hover:bg-white/10">
+<span class="material-symbols-outlined text-error mb-2">medical_services</span>
+<span class="font-label-sm text-label-sm text-white">Medical</span>
+</button>
+<button class="glass-card flex flex-col items-center justify-center py-md rounded-xl active:scale-95 transition-all hover:bg-white/10">
+<span class="material-symbols-outlined text-error mb-2">local_fire_department</span>
+<span class="font-label-sm text-label-sm text-white">Fire</span>
+</button>
+</div>
+<!-- Quick Dial Section -->
+<section class="w-full space-y-gutter">
+<div class="flex justify-between items-center">
+<h3 class="font-title-lg text-title-lg text-white">Quick Contacts</h3>
+<span class="text-xs font-label-sm text-outline-variant px-2 py-1 bg-white/5 rounded">24/7 Monitored</span>
+</div>
+<div class="space-y-base">
+<button class="w-full flex items-center justify-between p-md glass-card rounded-xl active:scale-[0.98] transition-all">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed">admin_panel_settings</span>
+</div>
+<div class="text-left">
+<p class="font-title-lg text-white">Estate Security</p>
+<p class="font-label-sm text-outline-variant">Dispatch: +234 800 123 4567</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary-fixed">call</span>
+</button>
+<button class="w-full flex items-center justify-between p-md glass-card rounded-xl active:scale-[0.98] transition-all">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-error/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error">emergency_share</span>
+</div>
+<div class="text-left">
+<p class="font-title-lg text-white">Emergency Services</p>
+<p class="font-label-sm text-outline-variant">Central Dispatch: 911</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary-fixed">call</span>
+</button>
+</div>
+</section>
+<!-- Location Tracker Card -->
+<section class="w-full space-y-gutter">
+<h3 class="font-title-lg text-title-lg text-white">Live Tracking</h3>
+<div class="w-full h-48 rounded-2xl glass-card overflow-hidden relative border border-white/5">
+<img class="w-full h-full object-cover opacity-60" data-alt="A highly detailed satellite view map of a luxury gated residential estate in Lagos at night. The map features glowing blue and white street lights illuminating structured paved roads and emerald green lawns. A bright red pulsating location pin marks a specific house in the center of the dark-themed topographic rendering. The visual style is premium, high-contrast, and focused on tactical precision and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Hjgxl6RUqwjJCQyDuwn2csh47zLF-_apZFE613T_gkoA0q2T4kfx8-Fmb3Fk1yMox77zm_gSeemZ2A_lNCokLSLSryLUBpco_3bcw7PhdGAve2VxkTg8brKel6mj_PI7q8O3Zhci8_Jhk73KOBCrKm1aQu4RlApI2dVt2D2burEsn-xlAsjDbFB6JZ3WKfXSJntwO67-ZDUgW8tmEjrypK_GkC0fSTdhxSk6PrrP3Pi4ifNdbzC_mxMn-z25qZxO-FCER5wupAI">
+<div class="absolute inset-0 bg-gradient-to-t from-[#0c0c0f] to-transparent"></div>
+<!-- Tracking Overlay -->
+<div class="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary shadow-[0_0_10px_#4edea3] animate-pulse"></div>
+<span class="font-label-md text-white">Signal High (GPS Locked)</span>
+</div>
+<span class="font-label-sm text-outline-variant bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                        Block 12, Victoria Crest
+                    </span>
+</div>
+<!-- Red Pulse on Map -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="w-12 h-12 bg-error/30 rounded-full flex items-center justify-center animate-ping"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-error border-2 border-white rounded-full"></div>
+</div>
+</div>
+</section>
+<!-- Safety Advice Footer -->
+<div class="w-full p-md glass-card rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-on-tertiary-container">info</span>
+<p class="font-label-md text-outline-variant leading-relaxed">
+                Stay calm and move to a safe zone if possible. Estate security is tracking your location and will arrive within 3-5 minutes.
+            </p>
+</div>
+</main>
+<!-- Contextual Action (Invisible triggered state logic placeholder) -->
+<div class="fixed bottom-margin-mobile left-margin-mobile right-margin-mobile z-[60] pointer-events-none opacity-0 translate-y-10 transition-all duration-500">
+<div class="w-full glass-card p-md rounded-2xl border-error/50 flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error flex items-center justify-center">
+<span class="material-symbols-outlined text-white animate-spin">sync</span>
+</div>
+<div>
+<p class="font-title-lg text-white">Signal Transmitting...</p>
+<p class="font-label-sm text-outline-variant">Alerting 12 Nearby Units</p>
+</div>
+</div>
+<button class="bg-surface-variant/10 text-white font-label-md px-4 py-2 rounded-lg pointer-events-auto">CANCEL</button>
+</div>
+</div>
+
+
+</body></html>

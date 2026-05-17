@@ -1,0 +1,276 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>chamDX - Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dde1ff",
+                    "outline": "#767680",
+                    "on-background": "#1b1b1f",
+                    "on-tertiary-container": "#d08500",
+                    "on-surface-variant": "#45464f",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#271500",
+                    "on-primary-fixed": "#091649",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#432800",
+                    "outline-variant": "#c6c5d0",
+                    "surface-container-low": "#f5f2f8",
+                    "primary": "#061447",
+                    "secondary": "#006c49",
+                    "on-primary-fixed-variant": "#384377",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container": "#efedf2",
+                    "on-primary-container": "#8792cb",
+                    "inverse-primary": "#b8c3ff",
+                    "on-surface": "#1b1b1f",
+                    "surface-variant": "#e4e1e7",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "inverse-on-surface": "#f2f0f5",
+                    "surface-dim": "#dbd9de",
+                    "primary-container": "#1e2a5c",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fbf8fd",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#303034",
+                    "secondary-container": "#6cf8bb",
+                    "surface-tint": "#505b90",
+                    "surface": "#fbf8fd",
+                    "surface-container-highest": "#e4e1e7",
+                    "on-secondary-container": "#00714d",
+                    "primary-fixed-dim": "#b8c3ff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae7ec",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-fixed": "#2a1700",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-bright": "#fbf8fd",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "base": "8px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "lg": "40px",
+                    "xl": "64px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "title-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base md:px-margin-desktop">
+<div class="flex items-center gap-sm"><button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/40 backdrop-blur-md active:scale-95 transition-transform">
+  <span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-white/20">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a young African man with a friendly expression, captured with soft, natural studio lighting that highlights his facial features against a clean, blurred background. The image has a premium, high-trust feel with deep navy and subtle neutral tones, reflecting a modern corporate and high-tech lifestyle aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJo5EOAmn-rptGyNEYZmc3ZCgp6gyBQfsVGj7sQhfOdIMVNfUKnHOFh0KGiUccEUwLRyS4OwsZFnt8JioSnXJGbDjwcjnDCP0qM3RxHLS60nOBm1SioB8eHtn0Yx11ou1n0wYaNYh_LBzJZOuNRc37-PEErtAl68kM3EtS3Set_M4XbyhvVbv8Ecmj-7tMrDuo4WwLrcH4j6LU1NoTxM-pnZoRkE_Wtm4nHEnxLH1aut8h8VHLWo6mTd5jyTwJMldoZHabVxi8jcs">
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hello, Segun</span>
+<span class="font-title-lg text-title-lg text-primary font-bold">Victoria Garden City</span>
+</div>
+</div>
+<div class="flex items-center gap-base">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/40 backdrop-blur-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto space-y-gutter">
+<!-- Welcome Section -->
+<section class="mb-gutter">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Dashboard</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Everything you need for your premium estate living.</p>
+</section>
+<!-- Bento Grid Quick Actions -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-base md:gap-gutter">
+<!-- Featured Action: Generate Pass -->
+<div class="col-span-2 row-span-2 glass-card rounded-xl p-md flex flex-col justify-between bg-primary-container/10 border-primary-container/20 shadow-lg relative overflow-hidden">
+<div class="z-10">
+<div class="w-12 h-12 rounded-lg bg-primary text-white flex items-center justify-center mb-base">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Generate Visitor Pass</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Instantly create secure entry codes for your guests.</p>
+</div>
+<button class="mt-lg bg-primary text-white py-sm px-md rounded-lg font-label-md text-label-md flex items-center justify-center gap-xs w-fit active:scale-95 transition-transform">
+                    Get Pass <span class="material-symbols-outlined text-md">chevron_right</span>
+</button>
+<div class="absolute -right-8 -bottom-8 opacity-5">
+<span class="material-symbols-outlined text-[12rem]">vpn_key</span>
+</div>
+</div>
+<!-- Emergency SOS -->
+<div class="glass-card rounded-xl p-md flex flex-col items-start justify-center border-error/20 bg-error/5 group active:scale-95 transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-error text-white flex items-center justify-center mb-sm shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency_home</span>
+</div>
+<span class="font-title-lg text-title-lg text-error">Emergency SOS</span>
+</div>
+<!-- Pending Visitors -->
+<div class="glass-card rounded-xl p-md flex flex-col items-start justify-center border-secondary/20 bg-secondary/5 group active:scale-95 transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<span class="font-title-lg text-title-lg text-secondary">Pending Visitors</span>
+</div>
+<!-- Payments -->
+<div class="glass-card rounded-xl p-md flex flex-col items-start justify-center active:scale-95 transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="font-title-lg text-title-lg text-on-surface">Payments</span>
+</div>
+<!-- Facility Booking -->
+<div class="glass-card rounded-xl p-md flex flex-col items-start justify-center active:scale-95 transition-transform cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-primary flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined">event_seat</span>
+</div>
+<span class="font-title-lg text-title-lg text-on-surface">Facilities</span>
+</div>
+</section>
+<!-- Recent Activity & Community Feed -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Recent Visitors -->
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary">Recent Activity</h2>
+<button class="text-primary font-label-md text-label-md">View All</button>
+</div>
+<div class="glass-card rounded-xl overflow-hidden divide-y divide-white/20">
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container border border-white/40">
+<img alt="Visitor" class="w-full h-full object-cover" data-alt="A portrait of a young woman with a calm expression, professional lighting emphasizing soft shadows on her face. The environment is clean and modern, suggesting an upscale residential or business lobby, with a sophisticated color palette of warm neutrals and soft navy accents consistent with a high-end service brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf3xrZZBQN-mw2eLOja5GAvVMD0dEQvZ4UNmqekC2c5lZUku4WHrHqgp03FjAASH5AyXFxfvaphKc-RwuWHeDE700q18Wa6DydLvMJNx6OtT4zpxaNIpFLY5YRykdV1ZjwbWt9rwq6x1b2eCHIY2t6gzv72_dKgSOpEirmw_07I1vkVBbec8lbB3KCw58J2RVMbfD-ever5nucvmVeJQKV7btvuW7S6ex7kZ-4tEeqPyks8wogVRcCo8e3Jf2jRnJHOzLuu1yDkT4">
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Adewale Johnson</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Checked-in • 10:45 AM</p>
+</div>
+<span class="px-sm py-xs bg-secondary/10 text-secondary rounded-full font-label-sm text-label-sm">In Estate</span>
+</div>
+<div class="p-md flex items-center gap-md">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container border border-white/40">
+<img alt="Visitor" class="w-full h-full object-cover" data-alt="A detailed portrait of a man with a friendly smile, shot against a high-key, bright background that feels airy and premium. The lighting is crisp, highlighting textures and deep skin tones with a cinematic quality. The overall aesthetic is clean, trustworthy, and modern, fitting for a secure estate management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA53csrjPcBwcf_z4X6PGWFNZ4IdLWnLi6ockWU0266yZrq_P3aTuwOCRD6_1_pbEi0xATjllNIr2UHaBe0E_73Sbiiij_zvkkzomD6Kp4GQWlIV9tTgS7X_kEKXTJ57Finp4l3oT2O_KEVysYCEqivU84nll3hkLVf956eQBGB3r8zhaV6amQBEz7lXLzgwqYRaQwZJvDIqoL2Wp8iuhj5GOyxcIT2BtA0zksnT64-vdz_aEzfiNZLbpXVpkO7eVfG4ALChp9RPk">
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Chioma Okoro</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Expected • 02:00 PM</p>
+</div>
+<span class="px-sm py-xs bg-primary-fixed text-primary rounded-full font-label-sm text-label-sm">Scheduled</span>
+</div>
+</div>
+</div>
+<!-- Community Carousel -->
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-primary">Community Feed</h2>
+<button class="text-primary font-label-md text-label-md">See More</button>
+</div>
+<div class="relative w-full overflow-hidden rounded-xl glass-card h-64 shadow-lg group">
+<img alt="Community Event" class="w-full h-full object-cover brightness-75 transition-transform duration-700 group-hover:scale-110" data-alt="A vibrant, high-energy scene of a modern community gathering in a lush, green landscaped area of a luxury gated estate. People are engaged in conversation, with soft sunlight filtering through trees, creating a warm and welcoming atmosphere. The visual style is premium and high-definition, using a palette of natural greens, deep navies, and crisp whites to represent a balanced, modern lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMYDpvLUE2l2-XwC8Dq5wnlk0ZbVvbJJNZ9I6BBabtQHWX_MPRBDprKSLOnFYlhJqvS2KfQBJ-mWBZTo1_dx6Z4A0sud2VKZ8MkWC5xIvh8oVoVpYtFkWk_AE9yjh2NYpexqcQTZ7jDotbw5qiB7jelXeKNHFB-_9D7sVecIfmclYCs2RGKjTrT5HkD8rwLzw5FFMYieJwxq_l-OjgNZEpAybG53-Ajw9C5LjH0I0TkOhxVffzBp4gmNW9AFON5RO0l1cpoYT9g6E">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-md text-white">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-container mb-xs">Upcoming Event</span>
+<h3 class="font-title-lg text-title-lg">Weekend Residents Social Mixer</h3>
+<p class="font-body-md text-body-md text-white/80 line-clamp-1">Join us at the Central Park for an evening of networking and refreshments.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB -->
+<button class="fixed right-margin-mobile bottom-32 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center z-50 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-margin-mobile py-sm md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+
+
+</body></html>

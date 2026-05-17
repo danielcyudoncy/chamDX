@@ -1,0 +1,298 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>chamDX Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dde1ff",
+                        "outline": "#767680",
+                        "on-background": "#1b1b1f",
+                        "on-tertiary-container": "#d08500",
+                        "on-surface-variant": "#45464f",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#271500",
+                        "on-primary-fixed": "#091649",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#432800",
+                        "outline-variant": "#c6c5d0",
+                        "surface-container-low": "#f5f2f8",
+                        "primary": "#061447",
+                        "secondary": "#006c49",
+                        "on-primary-fixed-variant": "#384377",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container": "#efedf2",
+                        "on-primary-container": "#8792cb",
+                        "inverse-primary": "#b8c3ff",
+                        "on-surface": "#1b1b1f",
+                        "surface-variant": "#e4e1e7",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "inverse-on-surface": "#f2f0f5",
+                        "surface-dim": "#dbd9de",
+                        "primary-container": "#1e2a5c",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303034",
+                        "secondary-container": "#6cf8bb",
+                        "surface-tint": "#505b90",
+                        "surface": "#fbf8fd",
+                        "surface-container-highest": "#e4e1e7",
+                        "on-secondary-container": "#00714d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae7ec",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed": "#2a1700",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-bright": "#fbf8fd",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002113"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "base": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "title-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base">
+<div class="flex items-center gap-sm"><button class="active:scale-95 transition-transform text-primary">
+    <span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a sophisticated property administrator in a minimalist office setting. The lighting is soft and high-key, creating a clean light-mode aesthetic. The portrait should feel modern and authoritative, reflecting a high-trust corporate environment with deep navy accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi_vh_EkJ0RHKFRspcqLE7kFWCO6rMiH7uSxzqJAHX4aUaNM1QtzXCwUxy0z6RUJtm10z6w7C47Z_cvdyxfgP2jzi-xECPQCT9bGDOX38bKoipI6TGK7siYjwHRRdBsVZ9b3ghq3jKtIs2mi_DqYYbVTO5WUxjjD3bdsnhAZ8C0vn30wcjEc5Njls0ZvhA6qwUI5AiiualrmuFCwZE5Si59Ut-K2LqH2RyWhD5J1sG50tp-jrQg9vSIN70JDRzSZ-z9JlocYmUHDA">
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">chamDX</span>
+</div>
+<button class="active:scale-95 transition-transform text-primary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pt-20 px-margin-mobile space-y-md">
+<!-- Welcome Section -->
+<section class="mt-xs">
+<h1 class="font-headline-md text-headline-md text-primary">Estate Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time management dashboard</p>
+</section>
+<!-- Bento Grid Stats -->
+<section class="grid grid-cols-2 gap-base">
+<!-- Total Residents -->
+<div class="glass-card p-md rounded-xl shadow-sm col-span-1">
+<div class="flex items-center gap-xs mb-xs">
+<span class="material-symbols-outlined text-primary" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Residents</span>
+</div>
+<div class="font-headline-md text-headline-md text-primary">1,248</div>
+<div class="font-label-sm text-label-sm text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                    +12%
+                </div>
+</div>
+<!-- Today's Visitors -->
+<div class="glass-card p-md rounded-xl shadow-sm col-span-1">
+<div class="flex items-center gap-xs mb-xs">
+<span class="material-symbols-outlined text-secondary" data-icon="badge">badge</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Visitors</span>
+</div>
+<div class="font-headline-md text-headline-md text-primary">42</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Expected Today</div>
+</div>
+<!-- Pending Payments -->
+<div class="glass-card p-md rounded-xl shadow-sm col-span-2 flex justify-between items-center">
+<div>
+<div class="flex items-center gap-xs mb-xs">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="payments">payments</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pending Collection</span>
+</div>
+<div class="font-headline-md text-headline-md text-primary">$14,250.00</div>
+</div>
+<button class="bg-primary-container text-on-primary-fixed-variant px-md py-sm rounded-lg font-label-md">
+                    Remind
+                </button>
+</div>
+<!-- Open Incidents -->
+<div class="glass-card p-md rounded-xl shadow-sm col-span-2 bg-error-container/20 border-error/10">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+<span class="font-title-lg text-title-lg text-on-error-container">Critical Incidents</span>
+</div>
+<span class="bg-error text-on-error px-sm py-xs rounded-full font-label-sm">3 Active</span>
+</div>
+</div>
+</section>
+<!-- Charts / Analytics Section -->
+<section class="space-y-sm">
+<h2 class="font-title-lg text-title-lg text-primary px-xs">Visitor Trends</h2>
+<div class="glass-card p-md rounded-xl h-48 relative overflow-hidden flex flex-col justify-end">
+<!-- Visual Placeholder for a Chart using Gradients -->
+<div class="absolute inset-0 flex items-end px-md pb-md gap-sm">
+<div class="w-full bg-primary/20 rounded-t-lg" style="height: 40%;"></div>
+<div class="w-full bg-primary/40 rounded-t-lg" style="height: 60%;"></div>
+<div class="w-full bg-primary-container rounded-t-lg" style="height: 90%;"></div>
+<div class="w-full bg-primary/50 rounded-t-lg" style="height: 75%;"></div>
+<div class="w-full bg-primary/30 rounded-t-lg" style="height: 50%;"></div>
+<div class="w-full bg-secondary rounded-t-lg" style="height: 85%;"></div>
+<div class="w-full bg-primary/20 rounded-t-lg" style="height: 45%;"></div>
+</div>
+<div class="relative z-10 flex justify-between items-center w-full bg-white/60 p-sm rounded-lg backdrop-blur-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last 7 Days Activity</span>
+<span class="font-label-md text-label-md text-primary font-bold">Peak: Sat</span>
+</div>
+</div>
+</section>
+<!-- Security Reports List -->
+<section class="space-y-sm">
+<div class="flex justify-between items-center px-xs">
+<h2 class="font-title-lg text-title-lg text-primary">Security Reports</h2>
+<button class="font-label-md text-label-md text-primary">View All</button>
+</div>
+<div class="space-y-xs">
+<!-- Report Item 1 -->
+<div class="glass-card p-md rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+</div>
+<div class="flex-1">
+<div class="font-label-md text-label-md text-primary">Gate 2 Breach Attempt</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">14:20 • Security Team Alpha</div>
+</div>
+<div class="bg-secondary/10 text-secondary px-sm py-xs rounded-full font-label-sm">Resolved</div>
+</div>
+<!-- Report Item 2 -->
+<div class="glass-card p-md rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="fire_truck">fire_truck</span>
+</div>
+<div class="flex-1">
+<div class="font-label-md text-label-md text-primary">Fire Alarm Test</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">10:05 • Block C</div>
+</div>
+<div class="bg-primary-container/10 text-primary px-sm py-xs rounded-full font-label-sm">System</div>
+</div>
+<!-- Report Item 3 -->
+<div class="glass-card p-md rounded-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="emergency_home">emergency_home</span>
+</div>
+<div class="flex-1">
+<div class="font-label-md text-label-md text-primary">Medical Assistance</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">08:45 • Villa 402</div>
+</div>
+<div class="bg-error/10 text-error px-sm py-xs rounded-full font-label-sm">Urgent</div>
+</div>
+</div>
+</section>
+<!-- Collections Status Widget -->
+<section class="glass-card p-md rounded-xl border-primary/10 overflow-hidden relative">
+<div class="relative z-10">
+<h2 class="font-title-lg text-title-lg text-primary mb-sm">Revenue Forecast</h2>
+<div class="flex items-center gap-md">
+<div class="relative w-20 h-20 flex items-center justify-center">
+<!-- Simple Progress Circle using SVG -->
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-high" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-secondary" cx="40" cy="40" fill="transparent" r="34" stroke="currentColor" stroke-dasharray="213.6" stroke-dashoffset="53.4" stroke-width="8"></circle>
+</svg>
+<span class="absolute font-bold text-primary font-label-md">75%</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-surface-variant">Monthly Target</div>
+<div class="font-headline-md text-headline-md text-primary">$45,000</div>
+<div class="font-label-sm text-label-sm text-secondary">On track for Q4</div>
+</div>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary/5 rounded-full"></div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-margin-mobile py-sm">
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+
+
+</body></html>

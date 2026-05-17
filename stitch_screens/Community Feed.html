@@ -1,0 +1,341 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>chamDX - Community Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#dde1ff",
+                      "outline": "#767680",
+                      "on-background": "#1b1b1f",
+                      "on-tertiary-container": "#d08500",
+                      "on-surface-variant": "#45464f",
+                      "on-error-container": "#93000a",
+                      "tertiary": "#271500",
+                      "on-primary-fixed": "#091649",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#432800",
+                      "outline-variant": "#c6c5d0",
+                      "surface-container-low": "#f5f2f8",
+                      "primary": "#061447",
+                      "secondary": "#006c49",
+                      "on-primary-fixed-variant": "#384377",
+                      "on-secondary-fixed-variant": "#005236",
+                      "surface-container": "#efedf2",
+                      "on-primary-container": "#8792cb",
+                      "inverse-primary": "#b8c3ff",
+                      "on-surface": "#1b1b1f",
+                      "surface-variant": "#e4e1e7",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "inverse-on-surface": "#f2f0f5",
+                      "surface-dim": "#dbd9de",
+                      "primary-container": "#1e2a5c",
+                      "on-tertiary": "#ffffff",
+                      "background": "#fbf8fd",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#303034",
+                      "secondary-container": "#6cf8bb",
+                      "surface-tint": "#505b90",
+                      "surface": "#fbf8fd",
+                      "surface-container-highest": "#e4e1e7",
+                      "on-secondary-container": "#00714d",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#eae7ec",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed": "#ffddb8",
+                      "on-tertiary-fixed": "#2a1700",
+                      "secondary-fixed-dim": "#4edea3",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "secondary-fixed": "#6ffbbe",
+                      "surface-bright": "#fbf8fd",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed": "#002113"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px",
+                      "base": "8px",
+                      "md": "24px",
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "lg": "40px",
+                      "xl": "64px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "title-lg": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .story-ring {
+            background: linear-gradient(45deg, #1e2a5c, #006c49);
+            padding: 2px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen">
+<!-- Top Navigation -->
+<header class="bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile py-base">
+<div class="flex items-center gap-base"><button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional portrait of a modern estate resident, a middle-aged man with a friendly expression. The photograph is shot with shallow depth of field in a high-end residential setting with soft, natural lighting. The overall aesthetic is clean, sophisticated, and trustworthy, matching a premium gated community brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeEudV7dWOp41wj_J2hwqveIe8zkpgV7s0HuN3V5GtiSwOAioWdL6dYXjOeTqdSoqblq4klG38rLLw5yZFhrMOQnXnLIEv_4vYLNBPjYTr0Mx0ChwgjXWBvFMXvpSmmTjYQuNVsjhZrNHaKKYluXjLoxz6cVxEX8BKs5xqwIr1C0nCJ0ISFOACI3DyEE47OXva9osgce3O7y0-sctJGtJMfAyLxY0PnAJIoKIZw2NRFYEVCjOhmSoJIFzI7DufSSc6_nrHmtNj5vQ">
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">chamDX</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 max-w-screen-md mx-auto px-margin-mobile">
+<!-- Story-style Updates -->
+<section class="mb-lg overflow-x-auto">
+<div class="flex gap-md pb-xs no-scrollbar">
+<!-- Add Story -->
+<div class="flex flex-col items-center gap-xs flex-shrink-0">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Your Update</span>
+</div>
+<!-- Estate Story 1 -->
+<div class="flex flex-col items-center gap-xs flex-shrink-0">
+<div class="w-16 h-16 rounded-full story-ring">
+<div class="w-full h-full rounded-full border-2 border-background overflow-hidden">
+<img alt="Estate Construction Update" class="w-full h-full object-cover" data-alt="A high-angle architectural shot of a modern construction project within a luxury residential estate. The image shows clean lines, reinforced steel, and professional equipment under a clear blue sky. The lighting is bright and optimistic, reflecting progress and high-value property development in a premium African urban context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvlk0VbHfJ-pwaMfpQhSauwAV7hb1VEm0bRBJM12EnP1Bxx5ecGnG0G3GpBc396T4OzgCzhSXGI0uZhf31c2rcaWSopWcWpUMK2nplh0UY-Y76jZE373emHATTXsXblN1WFmYC6XeJlFgmRZ5I-MNzeQ3sPkIYSP-U_YeWFYoEkV_s1RoJ0gCEtVe4JnH_Y-xCqbLLCEO-Ue7zeGl73A3s3ug6GBGx4DibPBsI3gKl_7WarnfIyYPfd8BxlQU6uNgPWFOyiYjPmEk">
+</div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">New Gym</span>
+</div>
+<!-- Estate Story 2 -->
+<div class="flex flex-col items-center gap-xs flex-shrink-0">
+<div class="w-16 h-16 rounded-full story-ring">
+<div class="w-full h-full rounded-full border-2 border-background overflow-hidden">
+<img alt="Security Team Update" class="w-full h-full object-cover" data-alt="A group of professional security personnel in sleek, dark navy uniforms standing at a gated community entrance. The setting is modern and high-tech, with digital monitoring systems visible. The mood is secure, orderly, and exclusive, utilizing a palette of deep blues and polished silver surfaces." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMNeY2iJ_45vl42UhrZYDd7vi50OvhUl4zStFwyeKs_NKRK0sTi09QlqolfJA_HpFbgodMvmhU7HiHwBTKTgQM4f5QmmwXMukmzgey_U80JYEQO20ty4spYJQefIAnIGVrcMP8Fl77fBPQSIJu3YbUYPiToS_-W8suMSUDD7odckMiCTkRUCmZSIPS1ecJ53E4vvFL35hYrr6I2HEPp8QP732GcQFT9DtTtyZ4MU12a8LNVnTlfGycwcDJWELI2dGdr9QYP0an35A">
+</div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Security</span>
+</div>
+<!-- Estate Story 3 -->
+<div class="flex flex-col items-center gap-xs flex-shrink-0">
+<div class="w-16 h-16 rounded-full story-ring">
+<div class="w-full h-full rounded-full border-2 border-background overflow-hidden">
+<img alt="Landscaping Update" class="w-full h-full object-cover" data-alt="A lush, manicured garden path featuring vibrant tropical plants and modern solar-powered lighting. The image captures a serene afternoon vibe with soft, warm sunlight filtering through leaves. The style is pristine and upscale, emphasizing the premium environmental stewardship of a luxury housing estate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKs_8HpBqYL8mA5obd8R2-_6TVkGunDUPQWJ1ckxErzrGStrh_zPBEb2uAkprXNK2A5d_FjWzarcwKU6UD9NSjZd-JStit7hc83SErs7S8fhJ-8tzdMdzpx1i8y8D6mWlEB8Wp1siXLWdgcT2l3KDwcykL-3Sr0lm4cN49Yl5pJJqTs9zUTCM5t8VHYevmCqG1If_FO3-LAlihHKTaSyyRQGa7Lp0rKpeuYHRzeHhGjUfTHtzs93iWhmPBOgRaNseJthZTXWxLDck">
+</div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Gardens</span>
+</div>
+<!-- Estate Story 4 -->
+<div class="flex flex-col items-center gap-xs flex-shrink-0">
+<div class="w-16 h-16 rounded-full story-ring">
+<div class="w-full h-full rounded-full border-2 border-background overflow-hidden">
+<img alt="Event Update" class="w-full h-full object-cover" data-alt="A stylish outdoor community gathering under elegant fairy lights at dusk. People are seen socializing in a sophisticated, minimalist lounge area with modern furniture. The atmosphere is warm, exclusive, and community-focused, utilizing soft glows and deep twilight shadows to create a premium social feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcE1fYNKut2MR8rPNHQ50rMXxcnzKy5s2ne5W1QOPExsv82-7rN5-0EcKRqKbBq97s2pJDC-VskVe70sDwh1Ftef7QNMAvc99Dh392C2kvxQqwF50meuHkm7jHukZk8Iqy4PG6dCws7CK6qt22zDr9obidldO0Fd2J-w7WPjF_-Z3D_iSddUPHYM3hVynLWllHktY1kb8CWq4WKJ-FJbpq66Ujf-M_xYqamQ2c_iQPtlRtMcSRttKP0q9wEwnnjj1jeoddxwHNfBM">
+</div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Socials</span>
+</div>
+</div>
+</section>
+<!-- Pinned Announcement (Gold Accent) -->
+<section class="mb-lg">
+<div class="glass-card rounded-xl p-md border-l-4 border-on-tertiary-container">
+<div class="flex items-center gap-sm mb-sm">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+<span class="font-label-md text-label-md text-on-tertiary-container">PINNED ANNOUNCEMENT</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-primary mb-xs">Annual General Meeting: Next Saturday</h3>
+<p class="text-body-md text-on-surface-variant">Join us for the 2024 AGM at the Clubhouse. We will be discussing the new security upgrades and the solar initiative.</p>
+<div class="mt-md flex justify-end">
+<button class="bg-primary text-on-primary font-label-md px-md py-sm rounded-lg hover:opacity-90 transition-opacity">Read More</button>
+</div>
+</div>
+</section>
+<!-- Community Feed -->
+<div class="space-y-gutter">
+<!-- Poll Post -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-md">
+<div class="flex items-center gap-sm mb-md">
+<img alt="Resident Profile" class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a young professional woman with a bright smile, representing a modern resident of an upscale urban community. She is dressed in smart-casual attire. The background is a blurred high-end interior with clean architectural lines and warm, inviting lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR5ZypS_4s2qCLzMAtU_Sp0iuc5C90tIHHsqWomuia_abIV77bu5SGDx_FOgw2b1fUW458qDvbJsnRt3XdmCE4HRVSHq8OSzIJqAxaUosxtlN2PFxyeOkKwkDfCwWbPEAm9z7dixExRgTHObHAHsiltc5WdewtEddHfUpXIzeAjrmRRpYwmjEasuSR3sgkI0sD14Az8wv2qXfg5EwHjbwEFXkVC5f04xG5n74WAHs2D_Glis9MFtEiFGcmbp85z9ZKucREEK7DKxE">
+<div>
+<p class="font-title-lg text-body-md font-bold text-primary">Sarah Adenuga</p>
+<p class="text-label-sm text-outline">Resident • 2h ago</p>
+</div>
+</div>
+<p class="text-body-md text-on-surface mb-md">What time should we host the neighborhood weekend barbecue?</p>
+<!-- Poll Options -->
+<div class="space-y-sm">
+<div class="relative w-full h-12 rounded-lg bg-surface-container flex items-center px-md overflow-hidden border border-outline-variant">
+<div class="absolute top-0 left-0 h-full bg-secondary/10 w-[65%]"></div>
+<span class="relative z-10 font-label-md text-on-surface flex justify-between w-full">
+<span class="">Saturday afternoon (2 PM)</span>
+<span class="text-secondary font-bold">65%</span>
+</span>
+</div>
+<div class="relative w-full h-12 rounded-lg bg-surface-container flex items-center px-md overflow-hidden border border-outline-variant">
+<div class="absolute top-0 left-0 h-full bg-secondary/10 w-[35%]"></div>
+<span class="relative z-10 font-label-md text-on-surface flex justify-between w-full">
+<span class="">Sunday brunch (11 AM)</span>
+<span class="">35%</span>
+</span>
+</div>
+</div>
+</div>
+<div class="px-md py-sm border-t border-white/10 flex items-center gap-md">
+<div class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-label-sm">42</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-label-sm">12</span>
+</div>
+</div>
+</div>
+<!-- Image Post -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-md">
+<div class="flex items-center gap-sm mb-md">
+<img alt="Resident Profile" class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a confident young man in a modern casual outfit, representing the tech-savvy demographic of a gated community. The lighting is soft and high-key, highlighting clean features and a friendly demeanor. The aesthetic is contemporary and high-trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTG-a7_eMD7ypyfwU8vYf_7_R_RZZlSTb8gARaWKZ64Hiymd3yapCldzljOpGR-CXFHI0aQ2SeExPou2QqF8cOpDxt4QHPBuRqZ4gl2_hQym21vTB6hdZzYRO7gKVTLgyB0z04BD3SpnfNQFkBGpQ5lDAwAbuoRd_Y_SBOy6TvENyBDR8Ah9hw67XRpyah-pLhGG8Pn7sMLkiiWt3WF-7VzqThY_IvLyf-46KnsHvrlsIBK5LeBQFSIeuzAQQzmghn2oDYXJyUHxY">
+<div>
+<p class="font-title-lg text-body-md font-bold text-primary">Kwame Mensah</p>
+<p class="text-label-sm text-outline">Resident • 5h ago</p>
+</div>
+</div>
+<p class="text-body-md text-on-surface mb-md">Finally sunset at the West Gate. The new lighting looks incredible! ✨</p>
+</div>
+<div class="w-full h-64">
+<img alt="Estate Sunset" class="w-full h-full object-cover" data-alt="A breathtaking landscape photograph of a luxury estate at sunset. The sky is painted in deep oranges and purples, reflecting off the glass windows of modern architectural villas. Strategically placed LED streetlights cast a warm, secure glow across paved paths. The style is aspirational and serene, capturing the peak of residential living." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDejz2_qB_m0_vGJlIc0gq7pT60i1XoEIqR88K0ICZlGTHCchrZBhF_AftExRxbrzg5iHsF36V7ej1J0PX9J0Mn1pVv-_d9CVrblefX7wY2AaSFl72giVrhLUgFJ-EB0ehzsCz4KwDIoKaPeBfx484epufb8hnSnEYQ_WzqfyffhUYe5XYkViiTsTleJtwBzS5mm6zBDvBPPwTlvH19McINKTnzItbSNKxQ57EEHMnu7jo9sqWjV1lcNbc2gVQQf9z_hshCnRwrk4M">
+</div>
+<div class="px-md py-sm border-t border-white/10 flex items-center gap-md">
+<div class="flex items-center gap-xs text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-label-sm">128</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-label-sm">5</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer ml-auto">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</div>
+</div>
+</div>
+<!-- Video/Rich Media Teaser Post -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-md">
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-fixed">admin_panel_settings</span>
+</div>
+<div>
+<p class="font-title-lg text-body-md font-bold text-primary">Estate Management</p>
+<p class="text-label-sm text-outline">Official • Yesterday</p>
+</div>
+</div>
+<p class="text-body-md text-on-surface mb-md">Watch our latest safety tutorial for the new smart-lock integration coming to all Phase 2 homes.</p>
+<div class="relative w-full h-48 rounded-lg bg-primary-container overflow-hidden group cursor-pointer">
+<img alt="Smart Lock Tutorial" class="w-full h-full object-cover opacity-60" data-alt="A close-up shot of a high-tech smart lock being operated by a mobile phone app. The scene is shot in a bright, modern interior with high-quality materials like brushed steel and oak wood. The lighting is crisp and clear, emphasizing technical precision and ease of use in a secure residential context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWOfTtMU5KeLtsw5hJE0mzQDS7VoXq5sd-uZ0vmrlg68vcQgD6CLvfU3OIP_tLlnq9RSFEk5Rw4SZSepej8n4gUfQ9RvEPVaiJ7nZbdCRtoRs_ni-zjQNP8e-Uhb3y-1rJEEQFohND77lSsRFQE7wwTxIgtNoCyiCe2uIATdF-YuTq_nVgAE_PhgSUuznIrQ-K5RXHMsdRUypa2mXIkNjmaV0P4VDpP8a5TrBQxtI65mwdh-qJU1YOKqeYaMl6o-s34SlVMKceyIc">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-[40px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+<div class="px-md py-sm border-t border-white/10 flex items-center gap-md">
+<div class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-label-sm">89</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-label-sm">24</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-margin-mobile w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center z-40 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[28px]">add_box</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-margin-mobile py-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform active:scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+
+
+</body></html>

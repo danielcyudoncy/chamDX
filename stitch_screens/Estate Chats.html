@@ -1,0 +1,287 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>chamDX | Messages</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-bg-pattern {
+            background-color: #fbf8fd;
+            background-image: radial-gradient(#061447 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            background-opacity: 0.05;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dde1ff",
+                        "outline": "#767680",
+                        "on-background": "#1b1b1f",
+                        "on-tertiary-container": "#d08500",
+                        "on-surface-variant": "#45464f",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#271500",
+                        "on-primary-fixed": "#091649",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#432800",
+                        "outline-variant": "#c6c5d0",
+                        "surface-container-low": "#f5f2f8",
+                        "primary": "#061447",
+                        "secondary": "#006c49",
+                        "on-primary-fixed-variant": "#384377",
+                        "on-secondary-fixed-variant": "#005236",
+                        "surface-container": "#efedf2",
+                        "on-primary-container": "#8792cb",
+                        "inverse-primary": "#b8c3ff",
+                        "on-surface": "#1b1b1f",
+                        "surface-variant": "#e4e1e7",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "inverse-on-surface": "#f2f0f5",
+                        "surface-dim": "#dbd9de",
+                        "primary-container": "#1e2a5c",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf8fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#303034",
+                        "secondary-container": "#6cf8bb",
+                        "surface-tint": "#505b90",
+                        "surface": "#fbf8fd",
+                        "surface-container-highest": "#e4e1e7",
+                        "on-secondary-container": "#00714d",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae7ec",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed": "#2a1700",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-bright": "#fbf8fd",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#002113"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "base": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "xl": "64px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "title-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-white/10 shadow-sm flex justify-between items-center px-margin-mobile py-base w-full">
+<div class="flex items-center gap-sm"><button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform mr-xs">
+    <span class="material-symbols-outlined">menu</span>
+</button>
+<img alt="User Profile Avatar" class="w-10 h-10 rounded-full border border-primary/10" data-alt="A professional close-up portrait of a modern, stylish person with a friendly expression. The lighting is soft and warm, characteristic of a high-end property management application interface. The background is a blurred luxury interior with neutral tones and clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkIoQdb6ZFxHN_7A72OhCMkJHvBIXriXQiwIvuajgJ0QlGNAp1Mwo0ygD18bI3AA-v0tm7MbjskSjONyzVIaclmI_SeVpbUph8hwuA7qPxJt4zXpMPBKiAfF3jrhyAhgTwkZCYME-EtKk6TQnEJEp4vplZOAjBRhuD5Dmw0vy_GKnSZEkcMXhXqf3zD4cpY_dFLw833jcS9qYIvLpYnwTz7Y7U8yhOdSQD6zWsAi1V0KlE2UwGU6y_PdS6T8Ik98_ObVId18-cG0w">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">chamDX</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-[72px] pb-[88px] min-h-screen chat-bg-pattern">
+<!-- Channels & Frequent Contacts -->
+<section class="px-margin-mobile py-md">
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-title-lg text-title-lg text-primary">Priority Groups</h2>
+<button class="text-label-md font-label-md text-secondary">View All</button>
+</div>
+<div class="flex gap-md overflow-x-auto pb-sm no-scrollbar">
+<!-- Group 1 -->
+<div class="flex flex-col items-center gap-xs min-w-[80px]">
+<div class="relative">
+<div class="w-16 h-16 rounded-2xl bg-primary-container flex items-center justify-center text-primary-fixed shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<span class="absolute -top-1 -right-1 bg-secondary text-on-secondary text-[10px] px-1.5 py-0.5 rounded-full font-bold border-2 border-background">12</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface truncate w-full text-center">Estate Gen</span>
+</div>
+<!-- Group 2 -->
+<div class="flex flex-col items-center gap-xs min-w-[80px]">
+<div class="w-16 h-16 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface truncate w-full text-center">Security</span>
+</div>
+<!-- Group 3 -->
+<div class="flex flex-col items-center gap-xs min-w-[80px]">
+<div class="w-16 h-16 rounded-2xl bg-surface-variant flex items-center justify-center text-on-surface-variant shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface truncate w-full text-center">Maintenance</span>
+</div>
+<!-- Add New -->
+<div class="flex flex-col items-center gap-xs min-w-[80px]">
+<div class="w-16 h-16 rounded-2xl border-2 border-dashed border-outline-variant flex items-center justify-center text-outline shadow-none">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline truncate w-full text-center">Join</span>
+</div>
+</div>
+</section>
+<!-- Chat List -->
+<section class="px-margin-mobile">
+<div class="bg-surface/60 backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden shadow-sm">
+<!-- Chat Item 1 (Typing) -->
+<div class="flex items-center p-md border-b border-surface-variant/30 hover:bg-primary-container/5 transition-colors cursor-pointer">
+<div class="relative shrink-0">
+<img class="w-14 h-14 rounded-full" data-alt="A portrait of a young woman with a warm, welcoming smile. She is wearing a modern professional outfit. The image has high-key lighting and a soft, clean aesthetic with a focus on high-fidelity details, fitting a premium service app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhhRDtfwl6wpaoRmN_KnkcQXP8XLv7f4d-r5p65b8tNyULzEubZuTcCd9dQhjcUoeSSYpJ5VjtTPS9kTt5V-qNzmCl7gy4ZxierZqiZVOSrLfI-3UE1RkisrSA6zEydyaantU8esWuxKeiKxyL4IxqFuwp22CrONtVzwdrc_VeaLfgtAoQ5lpOgYOY9pbb4OPGnXjd7ZEvxs37AvKyqGhfBrHxvmm8BRsSNw_u8g5-qlzAyO87TNY7a9Owlr2lEPj2_b7pYZ33gL0">
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-secondary border-2 border-background rounded-full"></span>
+</div>
+<div class="ml-md flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-xs">
+<h3 class="font-title-lg text-title-lg text-primary truncate">Sarah Jenkins</h3>
+<span class="text-label-sm font-label-sm text-secondary">Just now</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="text-body-md font-body-md text-secondary italic">typing...</span>
+</div>
+</div>
+</div>
+<!-- Chat Item 2 (Voice Note) -->
+<div class="flex items-center p-md border-b border-surface-variant/30 hover:bg-primary-container/5 transition-colors cursor-pointer">
+<div class="relative shrink-0">
+<img class="w-14 h-14 rounded-full" data-alt="A middle-aged man with short hair and a neat beard, looking confident and helpful. The photo is taken in natural, soft daylight with a slight bokeh effect of a manicured residential garden in the background, conveying security and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzEZnWcyBdoj8_tEBBIXDV4AcOi2c47BarHn5HVZyu_deQZj8rQt5eSv4-9OU0Lt1yjSllumeEXO3JdKj7zUEIY8MHqv7SP7HdjZbT_uymwyozaPcsQRhI_6wG5sT4eSjtiGZmMgUAKa36uMwelpbJLUmGncgkeJXUdW5eyGb2hdzCkS-XTCFEWtN4Wzf5f5wUsrlH2fBmgFrNkG9sIkn-48hD3irE8fcs7GIZQtlNpnmK37p9Z3wjrFptBg_PNF_RBOc1O7Bfe58">
+</div>
+<div class="ml-md flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-xs">
+<h3 class="font-title-lg text-title-lg text-primary truncate">Officer David (Gate)</h3>
+<span class="text-label-sm font-label-sm text-outline">10:42 AM</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-outline text-[18px]">mic</span>
+<span class="text-body-md font-body-md text-on-surface-variant truncate">Voice message (0:14)</span>
+</div>
+</div>
+<div class="ml-sm">
+<div class="w-6 h-6 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center text-[10px] font-bold">2</div>
+</div>
+</div>
+<!-- Chat Item 3 (Read Receipt) -->
+<div class="flex items-center p-md border-b border-surface-variant/30 hover:bg-primary-container/5 transition-colors cursor-pointer">
+<div class="shrink-0">
+<div class="w-14 h-14 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">landscape</span>
+</div>
+</div>
+<div class="ml-md flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-xs">
+<h3 class="font-title-lg text-title-lg text-primary truncate">Landscaping Committee</h3>
+<span class="text-label-sm font-label-sm text-outline">Yesterday</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">done_all</span>
+<span class="text-body-md font-body-md text-on-surface-variant truncate">The new fountain has been installed in the main plaza...</span>
+</div>
+</div>
+</div>
+<!-- Chat Item 4 -->
+<div class="flex items-center p-md hover:bg-primary-container/5 transition-colors cursor-pointer">
+<div class="shrink-0">
+<img class="w-14 h-14 rounded-full" data-alt="A portrait of a cheerful elderly couple sitting on a porch. The image uses warm, golden hour lighting and emphasizes a safe, family-oriented neighborhood vibe with high-quality textures and professional photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZd_ctDUaMjXHNERArhzk27ouBtRLQPmG6PDrWGjB2qpDu-zrEa5A6gHIyuoVDB0oaEjV2WsRl4O5zJwzXA9U6_mQLToF-wTtb5Z-4QHS18_wicpAbepKpnMgg0x4fxf2VThOosACdPXjZbreCBJuK40kdP2mwXmS8enGsCcp12klz9DoVlh7UzsK1L0YN0EACQMPUhuEdIHVgMv0eUuByT-nWKJOEf9aTElbOEo06NCRWZEjYTHzroaYQ9VjNaq6QJUv66RBgq0g">
+</div>
+<div class="ml-md flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-xs">
+<h3 class="font-title-lg text-title-lg text-primary truncate">The Mitchells (Unit 4B)</h3>
+<span class="text-label-sm font-label-sm text-outline">Tuesday</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="text-body-md font-body-md text-on-surface-variant truncate">Thanks for the recommendation on the AC guy!</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- New Chat FAB -->
+<div class="fixed bottom-24 right-6">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-xl shadow-lg flex items-center justify-center hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[28px]">chat_add_on</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/60 backdrop-blur-xl border-t border-white/10 shadow-lg flex justify-around items-center px-margin-mobile py-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-sm text-label-sm">Visitors</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Community</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="font-label-sm text-label-sm">Chats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+
+
+</body></html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>chamDX - Smart Living Starts Here</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dde1ff",
+                    "outline": "#767680",
+                    "on-background": "#1b1b1f",
+                    "on-tertiary-container": "#d08500",
+                    "on-surface-variant": "#45464f",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#271500",
+                    "on-primary-fixed": "#091649",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#432800",
+                    "outline-variant": "#c6c5d0",
+                    "surface-container-low": "#f5f2f8",
+                    "primary": "#061447",
+                    "secondary": "#006c49",
+                    "on-primary-fixed-variant": "#384377",
+                    "on-secondary-fixed-variant": "#005236",
+                    "surface-container": "#efedf2",
+                    "on-primary-container": "#8792cb",
+                    "inverse-primary": "#b8c3ff",
+                    "on-surface": "#1b1b1f",
+                    "surface-variant": "#e4e1e7",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "inverse-on-surface": "#f2f0f5",
+                    "surface-dim": "#dbd9de",
+                    "primary-container": "#1e2a5c",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fbf8fd",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#303034",
+                    "secondary-container": "#6cf8bb",
+                    "surface-tint": "#505b90",
+                    "surface": "#fbf8fd",
+                    "surface-container-highest": "#e4e1e7",
+                    "on-secondary-container": "#00714d",
+                    "primary-fixed-dim": "#b8c3ff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae7ec",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffddb8",
+                    "on-tertiary-fixed": "#2a1700",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-bright": "#fbf8fd",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "base": "8px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "lg": "40px",
+                    "xl": "64px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "title-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "title-lg": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-overlay {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .loader-ring {
+            width: 48px;
+            height: 48px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: #6ffbbe;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary-container min-h-screen flex items-center justify-center overflow-hidden">
+<!-- Background Illustration Layer -->
+<div class="absolute inset-0 z-0">
+<img alt="Modern Estate Skyline" class="w-full h-full object-cover opacity-30 mix-blend-overlay" data-alt="A sophisticated digital illustration of a modern luxury estate skyline at dusk, featuring sleek glass skyscrapers and premium residential towers. The aesthetic uses a deep navy and emerald color palette with glowing architectural highlights. The lighting is high-end and cinematic, creating a sense of security and exclusivity for a gated community management platform. The overall style is a blend of corporate stability and futuristic living, rendered in a crisp, high-resolution architectural visualization." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZgctwjljdgKYgXfjuENAwhPMVKOJTjWRKSM5e4Jqkin5Bg8SNqm6mjI6qEgTWVlaUdN_A5fsgrwHbHah5FJxLa6PhKGPpUZVCRWdOC_0gZp8AY6uVLlhBuKSoxSYYsZ6Y37VAuG4xB-eVuerSRBjyVtDhkm4s-EMve2V_zCWdjnMF6M4GqNHQvsmxlQ6hpjQajoX808Kx56UgGbbg6NI703cLcmBrSGdY4CNjncZ4nRmiT3iW7bjaBc7LhkSQl4B3TMY4Ow-9YJQ">
+<!-- Gradient Overlay for Depth -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/80 to-transparent"></div>
+</div>
+<!-- Content Canvas -->
+<main class="relative z-10 flex flex-col items-center justify-center w-full max-w-lg px-margin-mobile text-center">
+<!-- Logo Branding -->
+<div class="mb-lg">
+<div class="flex items-center justify-center mb-md">
+<div class="w-20 h-20 bg-secondary-container rounded-xl flex items-center justify-center shadow-2xl transform rotate-3">
+<span class="material-symbols-outlined text-[48px] text-on-secondary-container" data-icon="domain">domain</span>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-white tracking-tight font-extrabold mb-xs">
+                chamDX
+            </h1>
+<p class="font-body-md text-body-md text-primary-fixed opacity-80 tracking-wide">
+                Smart Living Starts Here
+            </p>
+</div>
+<!-- Glassmorphism Loading Card -->
+<div class="glass-overlay rounded-xl p-md w-full max-w-xs flex flex-col items-center gap-md shadow-xl">
+<div class="loader-ring"></div>
+<div class="space-y-base">
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim uppercase tracking-widest">
+                    Initializing Environment
+                </span>
+<div class="w-full bg-white/10 h-1 rounded-full overflow-hidden">
+<div class="bg-secondary-fixed h-full w-2/3 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Footer Branding/Tag -->
+<div class="absolute bottom-12 w-full left-0 flex flex-col items-center opacity-60">
+<div class="flex items-center gap-xs mb-xs">
+<span class="material-symbols-outlined text-[18px] text-white" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm text-white">SECURE ESTATE NETWORK</span>
+</div>
+<p class="font-label-sm text-label-sm text-white/40">Powered by DX Ecosystems</p>
+</div>
+</main>
+<!-- Subtle Lighting Effects -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/40 rounded-full blur-[120px] pointer-events-none"></div>
+</body></html>
