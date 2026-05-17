@@ -6,6 +6,7 @@ import 'app_routes.dart';
 import '../views/splash_screen.dart';
 import '../views/onboarding_screen.dart';
 import '../views/login_screen.dart';
+import '../views/signup_screen.dart';
 import '../views/resident_dashboard.dart';
 import '../views/visitor_pass_screen.dart';
 import '../views/facility_booking_screen.dart';
@@ -38,6 +39,7 @@ class AppPages {
   static final pages = [
     GetPage(name: AppRoutes.splash, page: () => const SplashScreen()),
     GetPage(name: AppRoutes.login, page: () => const LoginScreen()),
+    GetPage(name: AppRoutes.signup, page: () => const SignupScreen()),
     GetPage(name: AppRoutes.onboarding, page: () => const OnboardingScreen()),
     GetPage(name: AppRoutes.selectEstate, page: () => const SelectEstateScreen()),
     GetPage(name: AppRoutes.residentDashboard, page: () => const ResidentDashboard()),
