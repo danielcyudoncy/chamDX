@@ -61,9 +61,9 @@ class LoginScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 32),
                         
-                        const CustomInput(label: 'Email Address', hint: 'name@example.com'),
+                        CustomInput(label: 'Email Address', hint: 'name@example.com', controller: authController.emailController),
                         const SizedBox(height: 16),
-                        const CustomInput(label: 'Password', hint: '••••••••', isPassword: true),
+                        CustomInput(label: 'Password', hint: '••••••••', isPassword: true, controller: authController.passwordController),
                         
                         Align(
                           alignment: Alignment.centerRight,
@@ -78,7 +78,11 @@ class LoginScreen extends StatelessWidget {
                           text: 'Enter Dashboard',
                           isLoading: authController.isLoading.value,
                           onPressed: () {
-                            authController.login('test@test.com', 'password');
+                            if (authController.emailController.text.isNotEmpty && authController.passwordController.text.isNotEmpty) {
+                              authController.login(authController.emailController.text, authController.passwordController.text);
+                            } else {
+                              Get.snackbar('Error', 'Please enter email and password');
+                            }
                           },
                         )),
                         

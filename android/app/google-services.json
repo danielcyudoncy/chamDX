@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "301797870925",
+    "project_id": "chamdx-aecc2",
+    "storage_bucket": "chamdx-aecc2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301797870925:android:016e09c2a6f3f4f977fb04",
+        "android_client_info": {
+          "package_name": "com.example.chamdx"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsoVMfTZGBSlIi1eoyT6MM8iNSErHsFWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
