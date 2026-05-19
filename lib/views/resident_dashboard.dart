@@ -1,5 +1,7 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../controllers/auth_controller.dart';
 import '../routes/app_routes.dart';
 import '../theme/app_theme.dart';
 import '../widgets/glass_card.dart';
@@ -9,6 +11,7 @@ class ResidentDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authController = Get.find<AuthController>();
     return Scaffold(
       backgroundColor: AppTheme.background,
       appBar: AppBar(
@@ -31,19 +34,33 @@ class ResidentDashboard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Welcome back, John!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppTheme.primary),
-            ),
+            Obx(() {
+              final firestoreUser = authController.currentUserModel.value;
+              final name =
+                  firestoreUser?.name ??
+                  authController.firebaseUser.value?.displayName ??
+                  'Resident';
+              return Text(
+                'Welcome back, $name!',
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppTheme.primary,
+                ),
+              );
+            }),
             const SizedBox(height: 8),
             const Text(
               'Your home at chamDX Estate is secure.',
               style: TextStyle(fontSize: 16, color: AppTheme.outline),
             ),
             const SizedBox(height: 24),
-            
+
             // Quick Actions
-            const Text('Quick Actions', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+            const Text(
+              'Quick Actions',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
             const SizedBox(height: 16),
             GridView.count(
               crossAxisCount: 2,
@@ -78,10 +95,13 @@ class ResidentDashboard extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 32),
             // Recent Announcements
-            const Text('Recent Announcements', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+            Text(
+              'Recent Announcements',
+              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
+            ),
             const SizedBox(height: 16),
             GlassCard(
               child: Row(
@@ -91,9 +111,18 @@ class ResidentDashboard extends StatelessWidget {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('Pool Maintenance', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
-                        Text('The main pool will be closed on Friday for scheduled cleaning.', style: TextStyle(color: AppTheme.outline)),
+                      children: [
+                        Text(
+                          'Pool Maintenance',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16.sp,
+                          ),
+                        ),
+                        Text(
+                          'The main pool will be closed on Friday for scheduled cleaning.',
+                          style: TextStyle(color: AppTheme.outline),
+                        ),
                       ],
                     ),
                   ),
@@ -106,7 +135,12 @@ class ResidentDashboard extends StatelessWidget {
     );
   }
 
-  Widget _buildActionCard({required IconData icon, required String title, required Color color, required VoidCallback onTap}) {
+  Widget _buildActionCard({
+    required IconData icon,
+    required String title,
+    required Color color,
+    required VoidCallback onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -114,7 +148,11 @@ class ResidentDashboard extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
-            BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 10, offset: const Offset(0, 4)),
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            ),
           ],
         ),
         child: Column(
@@ -129,4 +167,3 @@ class ResidentDashboard extends StatelessWidget {
     );
   }
 }
-

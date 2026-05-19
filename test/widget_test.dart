@@ -14,5 +14,7 @@ void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     await tester.pumpWidget(const ChamDXApp());
     expect(find.byType(MaterialApp), findsOneWidget);
+    // Pump for 2 seconds to complete the splash screen timer and prevent pending timer failure
+    await tester.pumpAndSettle(const Duration(seconds: 2));
   });
 }

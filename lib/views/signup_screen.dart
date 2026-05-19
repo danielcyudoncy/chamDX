@@ -12,9 +12,10 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final authController = Get.find<AuthController>();
     final nameController = TextEditingController();
-    final unitController = TextEditingController();
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
+    final phoneController = TextEditingController();
+    final addressController = TextEditingController();
 
     return Scaffold(
       backgroundColor: AppTheme.background,
@@ -36,20 +37,24 @@ class SignupScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                
+
                 Expanded(
                   child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24.0,
+                      vertical: 48.0,
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'chamDX',
-                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            color: AppTheme.primary,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.headlineMedium
+                              ?.copyWith(
+                                color: AppTheme.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                         const SizedBox(height: 8),
                         Text(
@@ -59,64 +64,116 @@ class SignupScreen extends StatelessWidget {
                         const SizedBox(height: 8),
                         Text(
                           'Enter your details to register for your estate.',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppTheme.outline,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: AppTheme.outline),
                         ),
                         const SizedBox(height: 32),
-                        
-                        CustomInput(label: 'Full Name', hint: 'John Doe', controller: nameController),
+
+                        CustomInput(
+                          label: 'Full Name',
+                          hint: 'Full Name Please',
+                          controller: nameController,
+                        ),
                         const SizedBox(height: 16),
                         CustomInput(
-                          label: 'Phone Number', 
-                          hint: '080 0000 0000',
+                          label: 'Phone Number',
+                          hint: 'Phone Number Please',
+                          controller: phoneController,
                           prefixIcon: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 12),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const Icon(Icons.flag, size: 20, color: AppTheme.primary),
+                                const Icon(
+                                  Icons.flag,
+                                  size: 20,
+                                  color: AppTheme.primary,
+                                ),
                                 const SizedBox(width: 4),
-                                const Text('+234', style: TextStyle(fontWeight: FontWeight.bold)),
+                                const Text(
+                                  '+234',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                                 const SizedBox(width: 8),
-                                Container(height: 24, width: 1, color: AppTheme.outline),
+                                Container(
+                                  height: 24,
+                                  width: 1,
+                                  color: AppTheme.outline,
+                                ),
                                 const SizedBox(width: 8),
                               ],
                             ),
                           ),
                         ),
                         const SizedBox(height: 16),
-                        CustomInput(label: 'Unit Number', hint: 'e.g. A-12', controller: unitController),
+                        CustomInput(
+                          label: 'Residential Address',
+                          hint: 'e.g. Block 12, Unit 4B',
+                          controller: addressController,
+                        ),
                         const SizedBox(height: 16),
-                        CustomInput(label: 'Email Address', hint: 'name@example.com', controller: emailController),
+                        CustomInput(
+                          label: 'Email Address',
+                          hint: 'name@example.com',
+                          controller: emailController,
+                        ),
                         const SizedBox(height: 16),
-                        CustomInput(label: 'Password', hint: '••••••••', isPassword: true, controller: passwordController),
-                        
+                        CustomInput(
+                          label: 'Password',
+                          hint: '••••••••',
+                          isPassword: true,
+                          controller: passwordController,
+                        ),
+
                         const SizedBox(height: 32),
-                        
-                        Obx(() => PremiumButton(
-                          text: 'Sign Up',
-                          isLoading: authController.isLoading.value,
-                          onPressed: () {
-                            if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-                              // Register user
-                              authController.register(emailController.text, passwordController.text);
-                            } else {
-                              Get.snackbar('Error', 'Please fill in all required fields');
-                            }
-                          },
-                        )),
-                        
+
+                        Obx(
+                          () => PremiumButton(
+                            text: 'Sign Up',
+                            isLoading: authController.isLoading.value,
+                            onPressed: () {
+                              if (nameController.text.isNotEmpty &&
+                                  emailController.text.isNotEmpty &&
+                                  passwordController.text.isNotEmpty &&
+                                  phoneController.text.isNotEmpty &&
+                                  addressController.text.isNotEmpty) {
+                                // Register user
+                                authController.register(
+                                  emailController.text,
+                                  passwordController.text,
+                                  nameController.text,
+                                  '+234${phoneController.text}',
+                                  addressController.text,
+                                );
+                              } else {
+                                Get.snackbar(
+                                  'Error',
+                                  'Please fill in all required fields',
+                                );
+                              }
+                            },
+                          ),
+                        ),
+
                         const SizedBox(height: 32),
-                        
+
                         Center(
                           child: Wrap(
                             alignment: WrapAlignment.center,
                             children: [
-                              const Text('Already have an account? ', style: TextStyle(color: AppTheme.outline)),
+                              const Text(
+                                'Already have an account? ',
+                                style: TextStyle(color: AppTheme.outline),
+                              ),
                               GestureDetector(
                                 onTap: () => Get.back(),
-                                child: const Text('Log In', style: TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold)),
+                                child: const Text(
+                                  'Log In',
+                                  style: TextStyle(
+                                    color: AppTheme.primary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -127,7 +184,7 @@ class SignupScreen extends StatelessWidget {
                 ),
               ],
             );
-          }
+          },
         ),
       ),
     );

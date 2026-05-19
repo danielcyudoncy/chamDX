@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'routes/app_pages.dart';
 import 'routes/app_routes.dart';
 import 'theme/app_theme.dart';
@@ -22,13 +23,20 @@ class ChamDXApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'chamDX Smart Community',
-      theme: AppTheme.lightTheme,
-      initialRoute: AppRoutes.splash,
-      getPages: AppPages.pages,
-      debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.cupertino,
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return GetMaterialApp(
+          title: 'chamDX Smart Community',
+          theme: AppTheme.lightTheme,
+          initialRoute: AppRoutes.splash,
+          getPages: AppPages.pages,
+          debugShowCheckedModeBanner: false,
+          defaultTransition: Transition.cupertino,
+        );
+      },
     );
   }
 }
