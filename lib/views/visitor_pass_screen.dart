@@ -15,6 +15,11 @@ class VisitorPassScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppTheme.background,
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          color: AppTheme.primary,
+          onPressed: () => Get.back(),
+        ),
         title: const Text('Visitor Passes', style: TextStyle(color: AppTheme.primary, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.transparent,
         elevation: 0,

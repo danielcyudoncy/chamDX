@@ -126,44 +126,6 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 32),
 
-                                // Phone input
-                                CustomInput(
-                                  label: 'Phone Number',
-                                  hint: '080 0000 0000',
-                                  isDark: true,
-                                  prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Icon(
-                                          Icons.flag_rounded,
-                                          size: 20,
-                                          color: Color(0xFF6CF8BB),
-                                        ),
-                                        const SizedBox(width: 4),
-                                        const Text(
-                                          '+234',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 8),
-                                        Container(
-                                          height: 24,
-                                          width: 1,
-                                          color: Colors.white24,
-                                        ),
-                                        const SizedBox(width: 8),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 16),
-
                                 // Email Input
                                 CustomInput(
                                   label: 'Email Address',

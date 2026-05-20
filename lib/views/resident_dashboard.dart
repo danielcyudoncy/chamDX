@@ -1,4 +1,6 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
@@ -13,117 +15,233 @@ class ResidentDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     final authController = Get.find<AuthController>();
     return Scaffold(
-      backgroundColor: AppTheme.background,
-      appBar: AppBar(
-        backgroundColor: AppTheme.primary,
-        foregroundColor: Colors.white,
-        title: const Text('Resident Dashboard'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: () => Get.toNamed(AppRoutes.notifications),
-          ),
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () => Get.toNamed(AppRoutes.residentProfile),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      backgroundColor: Colors.transparent,
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: Stack(
           children: [
-            Obx(() {
-              final firestoreUser = authController.currentUserModel.value;
-              final name =
-                  firestoreUser?.name ??
-                  authController.firebaseUser.value?.displayName ??
-                  'Resident';
-              return Text(
-                'Welcome back, $name!',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
-                  color: AppTheme.primary,
+            // Dark Gradient Background
+            Positioned.fill(
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xFF061447),
+                      Color(0xFF030A27),
+                      Color(0xFF010518),
+                    ],
+                  ),
                 ),
-              );
-            }),
-            const SizedBox(height: 8),
-            const Text(
-              'Your home at chamDX Estate is secure.',
-              style: TextStyle(fontSize: 16, color: AppTheme.outline),
+              ),
             ),
-            const SizedBox(height: 24),
-
-            // Quick Actions
-            const Text(
-              'Quick Actions',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            // Glowing blur circles
+            Positioned(
+              top: -40,
+              right: -40,
+              child: Container(
+                width: 260,
+                height: 260,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: const Color(0xFF6CF8BB).withValues(alpha: 0.12),
+                ),
+              ),
             ),
-            const SizedBox(height: 16),
-            GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 16,
-              children: [
-                _buildActionCard(
-                  icon: Icons.qr_code,
-                  title: 'Visitor Pass',
-                  color: AppTheme.primary,
-                  onTap: () => Get.toNamed(AppRoutes.visitorPass),
+            Positioned(
+              bottom: -60,
+              left: -60,
+              child: Container(
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppTheme.secondary.withValues(alpha: 0.12),
                 ),
-                _buildActionCard(
-                  icon: Icons.event_seat,
-                  title: 'Book Facility',
-                  color: AppTheme.secondary,
-                  onTap: () => Get.toNamed(AppRoutes.facilityBooking),
-                ),
-                _buildActionCard(
-                  icon: Icons.payments,
-                  title: 'Payments',
-                  color: Colors.orange,
-                  onTap: () => Get.toNamed(AppRoutes.payments),
-                ),
-                _buildActionCard(
-                  icon: Icons.warning,
-                  title: 'Emergency SOS',
-                  color: AppTheme.error,
-                  onTap: () => Get.toNamed(AppRoutes.emergencySos),
-                ),
-              ],
+              ),
+            ),
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 70, sigmaY: 70),
+                child: Container(color: Colors.transparent),
+              ),
             ),
 
-            const SizedBox(height: 32),
-            // Recent Announcements
-            Text(
-              'Recent Announcements',
-              style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(height: 16),
-            GlassCard(
-              child: Row(
+            // Content
+            SafeArea(
+              child: Column(
                 children: [
-                  const Icon(Icons.campaign, color: AppTheme.primary, size: 32),
-                  const SizedBox(width: 16),
+                  // Custom Glassmorphic AppBar
+                  _buildAppBar(context),
+                  
+                  // Scrollable Body
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Pool Maintenance',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // User Greeting
+                          Obx(() {
+                            final firestoreUser = authController.currentUserModel.value;
+                            final name = firestoreUser?.name ??
+                                authController.firebaseUser.value?.displayName ??
+                                'Resident';
+                            return RichText(
+                              text: TextSpan(
+                                style: TextStyle(
+                                  fontSize: 24.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  height: 1.2,
+                                ),
+                                children: [
+                                  const TextSpan(text: 'Welcome back,\n'),
+                                  TextSpan(
+                                    text: '$name!',
+                                    style: const TextStyle(
+                                      color: Color(0xFF6CF8BB),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Your home at chamDX Estate is secure.',
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              color: Colors.white.withValues(alpha: 0.6),
+                            ),
                           ),
-                        ),
-                        Text(
-                          'The main pool will be closed on Friday for scheduled cleaning.',
-                          style: TextStyle(color: AppTheme.outline),
-                        ),
-                      ],
+                          const SizedBox(height: 32),
+
+                          // Quick Actions Section
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Quick Actions',
+                                style: TextStyle(
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF6CF8BB).withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: Text(
+                                  '4 Services',
+                                  style: TextStyle(
+                                    fontSize: 11.sp,
+                                    color: const Color(0xFF6CF8BB),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          GridView.count(
+                            crossAxisCount: 2,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16,
+                            childAspectRatio: 1.1,
+                            children: [
+                              _buildActionCard(
+                                icon: Icons.qr_code_scanner_rounded,
+                                title: 'Visitor Pass',
+                                color: const Color(0xFF63B3ED),
+                                onTap: () => Get.toNamed(AppRoutes.visitorPass),
+                              ),
+                              _buildActionCard(
+                                icon: Icons.calendar_today_rounded,
+                                title: 'Book Facility',
+                                color: const Color(0xFF6CF8BB),
+                                onTap: () => Get.toNamed(AppRoutes.facilityBooking),
+                              ),
+                              _buildActionCard(
+                                icon: Icons.payments_rounded,
+                                title: 'Payments',
+                                color: const Color(0xFFF6AD55),
+                                onTap: () => Get.toNamed(AppRoutes.payments),
+                              ),
+                              _buildActionCard(
+                                icon: Icons.warning_amber_rounded,
+                                title: 'Emergency SOS',
+                                color: const Color(0xFFFC8181),
+                                onTap: () => Get.toNamed(AppRoutes.emergencySos),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 32),
+
+                          // Recent Announcements Section
+                          Text(
+                            'Recent Announcements',
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          GlassCard(
+                            borderRadius: 18,
+                            padding: const EdgeInsets.all(16),
+                            opacity: 0.06,
+                            blur: 15,
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF6CF8BB).withValues(alpha: 0.15),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.campaign_rounded,
+                                    color: Color(0xFF6CF8BB),
+                                    size: 28,
+                                  ),
+                                ),
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Pool Maintenance',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16.sp,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        'The main pool will be closed on Friday for scheduled cleaning.',
+                                        style: TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 13.sp,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -135,33 +253,121 @@ class ResidentDashboard extends StatelessWidget {
     );
   }
 
+  Widget _buildAppBar(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF6CF8BB).withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.home_work_rounded,
+                  color: Color(0xFF6CF8BB),
+                  size: 24,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                'chamDX',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.5,
+                    ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              _buildAppBarIconButton(
+                icon: Icons.notifications_none_rounded,
+                onTap: () => Get.toNamed(AppRoutes.notifications),
+              ),
+              const SizedBox(width: 12),
+              _buildAppBarIconButton(
+                icon: Icons.person_outline_rounded,
+                onTap: () => Get.toNamed(AppRoutes.residentProfile),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildAppBarIconButton({required IconData icon, required VoidCallback onTap}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.06),
+        shape: BoxShape.circle,
+        border: Border.all(color: Colors.white10),
+      ),
+      child: IconButton(
+        icon: Icon(icon, color: Colors.white, size: 22),
+        onPressed: onTap,
+        constraints: const BoxConstraints(),
+        padding: const EdgeInsets.all(10),
+      ),
+    );
+  }
+
   Widget _buildActionCard({
     required IconData icon,
     required String title,
     required Color color,
     required VoidCallback onTap,
   }) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
-              blurRadius: 10,
-              offset: const Offset(0, 4),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(18),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          splashColor: color.withValues(alpha: 0.2),
+          highlightColor: color.withValues(alpha: 0.1),
+          child: GlassCard(
+            borderRadius: 18,
+            padding: const EdgeInsets.all(16),
+            opacity: 0.06,
+            blur: 15,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: color.withValues(alpha: 0.15),
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: color.withValues(alpha: 0.25),
+                        blurRadius: 16,
+                        spreadRadius: 2,
+                      ),
+                    ],
+                  ),
+                  child: Icon(icon, size: 36, color: color),
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14.sp,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 48, color: color),
-            const SizedBox(height: 12),
-            Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
-          ],
+          ),
         ),
       ),
     );
