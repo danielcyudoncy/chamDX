@@ -179,7 +179,7 @@ class LoginScreen extends StatelessWidget {
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: TextButton(
-                                    onPressed: () {},
+                                    onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
                                     child: const Text(
                                       'Forgot Password?',
                                       style: TextStyle(color: Color(0xFF6CF8BB)),

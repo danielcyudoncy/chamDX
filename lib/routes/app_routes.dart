@@ -17,4 +17,5 @@ abstract class AppRoutes {
   static const securityScanner = '/security-scanner';
   static const adminDashboard = '/admin-dashboard';
   static const adminAnalytics = '/admin-analytics';
+  static const String forgotPassword = '/forgot-password';
 }

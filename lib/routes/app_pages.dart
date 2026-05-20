@@ -21,6 +21,7 @@ import '../views/app_settings_screen.dart';
 import '../views/security_scanner_screen.dart';
 import '../views/admin_desktop_dashboard.dart';
 import '../views/admin_analytics_screen.dart';
+import '../views/forgot_password_screen.dart';
 
 class PlaceholderView extends StatelessWidget {
   final String title;
@@ -55,5 +56,6 @@ class AppPages {
     GetPage(name: AppRoutes.securityScanner, page: () => const SecurityScannerScreen()),
     GetPage(name: AppRoutes.adminDashboard, page: () => const AdminDesktopDashboard()),
     GetPage(name: AppRoutes.adminAnalytics, page: () => const AdminAnalyticsScreen()),
+    GetPage(name: AppRoutes.forgotPassword, page: () => const ForgotPasswordScreen()),
   ];
 }

@@ -123,4 +123,29 @@ class AuthController extends GetxController {
     await _auth.signOut();
     Get.offAllNamed(AppRoutes.login);
   }
+
+  Future<void> sendPasswordResetEmail(String email) async {
+    try {
+      isLoading.value = true;
+      await _auth.sendPasswordResetEmail(email: email);
+      Get.back(); // Navigate back to Login Screen
+      Get.snackbar(
+        'Success',
+        'Password reset email sent. Please check your inbox.',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: const Color(0xFF6CF8BB),
+        colorText: const Color(0xFF061447),
+      );
+    } on FirebaseAuthException catch (e) {
+      Get.snackbar(
+        'Error',
+        e.message ?? 'Failed to send password reset email',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withValues(alpha: 0.8),
+        colorText: Colors.white,
+      );
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }
