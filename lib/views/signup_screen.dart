@@ -93,7 +93,7 @@ class SignupScreen extends StatelessWidget {
                           child: GlassCard(
                             borderRadius: 24,
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0,
+                              horizontal: 14.0,
                               vertical: 32.0,
                             ),
                             opacity: 0.1,
@@ -105,7 +105,9 @@ class SignupScreen extends StatelessWidget {
                                 // Title
                                 Text(
                                   'chamDX',
-                                  style: Theme.of(context).textTheme.headlineMedium
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
                                       ?.copyWith(
                                         color: const Color(0xFF6CF8BB),
                                         fontWeight: FontWeight.bold,
@@ -114,7 +116,9 @@ class SignupScreen extends StatelessWidget {
                                 const SizedBox(height: 8),
                                 Text(
                                   'Create Account',
-                                  style: Theme.of(context).textTheme.headlineLarge
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineLarge
                                       ?.copyWith(color: Colors.white),
                                 ),
                                 const SizedBox(height: 8),
@@ -141,7 +145,9 @@ class SignupScreen extends StatelessWidget {
                                   isDark: true,
                                   controller: phoneController,
                                   prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                    ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -222,7 +228,8 @@ class SignupScreen extends StatelessWidget {
                                         Get.snackbar(
                                           'Error',
                                           'Please fill in all required fields',
-                                          backgroundColor: Colors.red.withValues(alpha: 0.8),
+                                          backgroundColor: Colors.red
+                                              .withValues(alpha: 0.8),
                                           colorText: Colors.white,
                                         );
                                       }
@@ -270,10 +277,7 @@ class SignupScreen extends StatelessWidget {
                               gradient: LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xFF061447),
-                                  Color(0xFF006C49),
-                                ],
+                                colors: [Color(0xFF061447), Color(0xFF006C49)],
                               ),
                             ),
                             child: Column(
@@ -295,12 +299,16 @@ class SignupScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 16),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 48.0),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 48.0,
+                                  ),
                                   child: Text(
                                     'Join chamDX Community',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      color: Colors.white.withValues(alpha: 0.8),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.8,
+                                      ),
                                       fontSize: 24,
                                       fontWeight: FontWeight.w300,
                                     ),

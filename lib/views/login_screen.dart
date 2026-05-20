@@ -77,11 +77,11 @@ class LoginScreen extends StatelessWidget {
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   bool isDesktop = constraints.maxWidth > 800;
-                  
+
                   Widget loginForm() {
                     return SingleChildScrollView(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 24.0,
+                        horizontal: 16.0,
                         vertical: 36.0,
                       ),
                       child: Center(
@@ -102,7 +102,9 @@ class LoginScreen extends StatelessWidget {
                                 // Title
                                 Text(
                                   'chamDX',
-                                  style: Theme.of(context).textTheme.headlineMedium
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium
                                       ?.copyWith(
                                         color: const Color(0xFF6CF8BB),
                                         fontWeight: FontWeight.bold,
@@ -111,7 +113,9 @@ class LoginScreen extends StatelessWidget {
                                 const SizedBox(height: 8),
                                 Text(
                                   'Welcome Home',
-                                  style: Theme.of(context).textTheme.headlineLarge
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineLarge
                                       ?.copyWith(color: Colors.white),
                                 ),
                                 const SizedBox(height: 8),
@@ -128,7 +132,9 @@ class LoginScreen extends StatelessWidget {
                                   hint: '080 0000 0000',
                                   isDark: true,
                                   prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                    ),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -179,10 +185,13 @@ class LoginScreen extends StatelessWidget {
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: TextButton(
-                                    onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
+                                    onPressed: () =>
+                                        Get.toNamed(AppRoutes.forgotPassword),
                                     child: const Text(
                                       'Forgot Password?',
-                                      style: TextStyle(color: Color(0xFF6CF8BB)),
+                                      style: TextStyle(
+                                        color: Color(0xFF6CF8BB),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -205,13 +214,16 @@ class LoginScreen extends StatelessWidget {
                                               .isNotEmpty) {
                                         authController.login(
                                           authController.emailController.text,
-                                          authController.passwordController.text,
+                                          authController
+                                              .passwordController
+                                              .text,
                                         );
                                       } else {
                                         Get.snackbar(
                                           'Error',
                                           'Please enter email and password',
-                                          backgroundColor: Colors.red.withValues(alpha: 0.8),
+                                          backgroundColor: Colors.red
+                                              .withValues(alpha: 0.8),
                                           colorText: Colors.white,
                                         );
                                       }
@@ -222,18 +234,26 @@ class LoginScreen extends StatelessWidget {
                                 const SizedBox(height: 24),
                                 Row(
                                   children: [
-                                    const Expanded(child: Divider(color: Colors.white12)),
+                                    const Expanded(
+                                      child: Divider(color: Colors.white12),
+                                    ),
                                     Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 16,
+                                      ),
                                       child: Text(
                                         'OR CONTINUE WITH',
                                         style: TextStyle(
-                                          color: Colors.white.withValues(alpha: 0.4),
+                                          color: Colors.white.withValues(
+                                            alpha: 0.4,
+                                          ),
                                           fontSize: 12,
                                         ),
                                       ),
                                     ),
-                                    const Expanded(child: Divider(color: Colors.white12)),
+                                    const Expanded(
+                                      child: Divider(color: Colors.white12),
+                                    ),
                                   ],
                                 ),
                                 const SizedBox(height: 24),
@@ -246,29 +266,48 @@ class LoginScreen extends StatelessWidget {
                                         onPressed: () {},
                                         style: OutlinedButton.styleFrom(
                                           foregroundColor: Colors.white,
-                                          side: const BorderSide(color: Colors.white24),
-                                          padding: const EdgeInsets.symmetric(vertical: 16),
+                                          side: const BorderSide(
+                                            color: Colors.white24,
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 16,
+                                          ),
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(12),
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
                                           ),
                                         ),
-                                        icon: const Icon(Icons.g_mobiledata_rounded, size: 24),
+                                        icon: const Icon(
+                                          Icons.g_mobiledata_rounded,
+                                          size: 24,
+                                        ),
                                         label: const Text('Google'),
                                       ),
                                     ),
                                     const SizedBox(width: 16),
                                     Expanded(
                                       child: OutlinedButton.icon(
-                                        onPressed: () {},
+                                        onPressed: () => authController
+                                            .authenticateWithBiometrics(),
                                         style: OutlinedButton.styleFrom(
                                           foregroundColor: Colors.white,
-                                          side: const BorderSide(color: Colors.white24),
-                                          padding: const EdgeInsets.symmetric(vertical: 16),
+                                          side: const BorderSide(
+                                            color: Colors.white24,
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 16,
+                                          ),
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(12),
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
                                           ),
                                         ),
-                                        icon: const Icon(Icons.fingerprint_rounded, size: 20),
+                                        icon: const Icon(
+                                          Icons.fingerprint_rounded,
+                                          size: 20,
+                                        ),
                                         label: const Text('Biometric'),
                                       ),
                                     ),
@@ -281,11 +320,14 @@ class LoginScreen extends StatelessWidget {
                                   child: RichText(
                                     textAlign: TextAlign.center,
                                     text: TextSpan(
-                                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                            color: Colors.white70,
-                                          ),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(color: Colors.white70),
                                       children: [
-                                        const TextSpan(text: 'New to the estate? '),
+                                        const TextSpan(
+                                          text: 'New to the estate? ',
+                                        ),
                                         TextSpan(
                                           text: 'Join chamDX Community',
                                           style: const TextStyle(
@@ -378,10 +420,7 @@ class LoginScreen extends StatelessWidget {
                               gradient: LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xFF061447),
-                                  Color(0xFF006C49),
-                                ],
+                                colors: [Color(0xFF061447), Color(0xFF006C49)],
                               ),
                             ),
                             child: Column(
@@ -403,12 +442,16 @@ class LoginScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 16),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 48.0),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 48.0,
+                                  ),
                                   child: Text(
                                     'Digital Stewardship for African Estates',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      color: Colors.white.withValues(alpha: 0.8),
+                                      color: Colors.white.withValues(
+                                        alpha: 0.8,
+                                      ),
                                       fontSize: 24,
                                       fontWeight: FontWeight.w300,
                                     ),

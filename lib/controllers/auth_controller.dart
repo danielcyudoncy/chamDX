@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:local_auth/local_auth.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../models/user_model.dart';
 import '../repositories/firestore_repository.dart';
 import '../routes/app_routes.dart';
@@ -8,6 +10,8 @@ import '../routes/app_routes.dart';
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirestoreRepository _repository = FirestoreRepository();
+  final LocalAuthentication _localAuth = LocalAuthentication();
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
   
   final RxBool isLoading = false.obs;
   final Rx<User?> firebaseUser = Rx<User?>(null);
@@ -42,6 +46,11 @@ class AuthController extends GetxController {
     try {
       isLoading.value = true;
       await _auth.signInWithEmailAndPassword(email: email, password: password);
+      
+      // Save credentials for biometrics
+      await _secureStorage.write(key: 'saved_email', value: email);
+      await _secureStorage.write(key: 'saved_password', value: password);
+
       Get.offAllNamed(AppRoutes.residentDashboard);
     } on FirebaseAuthException catch (e) {
       Get.snackbar('Login Error', e.message ?? 'Authentication failed', snackPosition: SnackPosition.BOTTOM);
@@ -72,6 +81,10 @@ class AuthController extends GetxController {
       firebaseUser.value = _auth.currentUser;
       currentUserModel.value = userModel;
       
+      // Save credentials for biometrics
+      await _secureStorage.write(key: 'saved_email', value: email);
+      await _secureStorage.write(key: 'saved_password', value: password);
+
       Get.offAllNamed(AppRoutes.residentDashboard);
     } on FirebaseAuthException catch (e) {
       Get.snackbar('Registration Error', e.message ?? 'Sign up failed', snackPosition: SnackPosition.BOTTOM);
@@ -146,6 +159,57 @@ class AuthController extends GetxController {
       );
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  Future<void> authenticateWithBiometrics() async {
+    try {
+      final bool canAuthenticateWithBiometrics = await _localAuth.canCheckBiometrics;
+      final bool canAuthenticate = canAuthenticateWithBiometrics || await _localAuth.isDeviceSupported();
+
+      if (!canAuthenticate) {
+        Get.snackbar(
+          'Biometrics Unavailable',
+          'Biometric authentication is not supported or set up on this device.',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red.withValues(alpha: 0.8),
+          colorText: Colors.white,
+        );
+        return;
+      }
+
+      final bool didAuthenticate = await _localAuth.authenticate(
+        localizedReason: 'Please authenticate to log into chamDX',
+        biometricOnly: true,
+        persistAcrossBackgrounding: true,
+      );
+
+      if (!didAuthenticate) {
+        return;
+      }
+
+      final String? savedEmail = await _secureStorage.read(key: 'saved_email');
+      final String? savedPassword = await _secureStorage.read(key: 'saved_password');
+
+      if (savedEmail != null && savedPassword != null) {
+        login(savedEmail, savedPassword);
+      } else {
+        Get.snackbar(
+          'Setup Required',
+          'No saved credentials found. Please log in manually first to enable biometrics.',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.orange.withValues(alpha: 0.8),
+          colorText: Colors.white,
+        );
+      }
+    } catch (e) {
+      Get.snackbar(
+        'Biometric Error',
+        'An error occurred: $e',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red.withValues(alpha: 0.8),
+        colorText: Colors.white,
+      );
     }
   }
 }

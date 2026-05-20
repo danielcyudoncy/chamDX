@@ -61,6 +61,7 @@ class _CustomInputState extends State<CustomInput> {
             hintText: widget.hint,
             hintStyle: TextStyle(
               color: widget.isDark ? Colors.white30 : AppTheme.outline,
+              fontSize: 12.0,
             ),
             prefixIcon: widget.prefixIcon,
             suffixIcon: widget.isPassword
