@@ -9,6 +9,7 @@ class CustomInput extends StatefulWidget {
   final Widget? prefixIcon;
   final bool readOnly;
   final VoidCallback? onTap;
+  final bool isDark;
 
   const CustomInput({
     super.key,
@@ -19,6 +20,7 @@ class CustomInput extends StatefulWidget {
     this.prefixIcon,
     this.readOnly = false,
     this.onTap,
+    this.isDark = false,
   });
 
   @override
@@ -43,7 +45,7 @@ class _CustomInputState extends State<CustomInput> {
           widget.label,
           style: Theme.of(context).textTheme.labelMedium?.copyWith(
                 fontWeight: FontWeight.w600,
-                color: AppTheme.onSurface,
+                color: widget.isDark ? Colors.white70 : AppTheme.onSurface,
               ),
         ),
         const SizedBox(height: 8),
@@ -52,14 +54,20 @@ class _CustomInputState extends State<CustomInput> {
           obscureText: _obscureText,
           readOnly: widget.readOnly,
           onTap: widget.onTap,
+          style: TextStyle(
+            color: widget.isDark ? Colors.white : AppTheme.onSurface,
+          ),
           decoration: InputDecoration(
             hintText: widget.hint,
+            hintStyle: TextStyle(
+              color: widget.isDark ? Colors.white30 : AppTheme.outline,
+            ),
             prefixIcon: widget.prefixIcon,
             suffixIcon: widget.isPassword
                 ? IconButton(
                     icon: Icon(
                       _obscureText ? Icons.visibility_off : Icons.visibility,
-                      color: AppTheme.outline,
+                      color: widget.isDark ? Colors.white54 : AppTheme.outline,
                     ),
                     onPressed: () {
                       setState(() {
@@ -69,19 +77,26 @@ class _CustomInputState extends State<CustomInput> {
                   )
                 : null,
             filled: true,
-            fillColor: Colors.white,
+            fillColor: widget.isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
-              borderSide: const BorderSide(color: AppTheme.outline),
+              borderSide: BorderSide(
+                color: widget.isDark ? Colors.white24 : AppTheme.outline,
+              ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
-              borderSide: const BorderSide(color: AppTheme.outline),
+              borderSide: BorderSide(
+                color: widget.isDark ? Colors.white24 : AppTheme.outline,
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
-              borderSide: const BorderSide(color: AppTheme.primary, width: 2),
+              borderSide: BorderSide(
+                color: widget.isDark ? const Color(0xFF6CF8BB) : AppTheme.primary,
+                width: 2,
+              ),
             ),
           ),
         ),

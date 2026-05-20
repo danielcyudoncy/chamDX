@@ -1,9 +1,12 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
 import '../theme/app_theme.dart';
 import '../widgets/premium_button.dart';
 import '../widgets/custom_input.dart';
+import '../widgets/glass_card.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -18,173 +21,311 @@ class SignupScreen extends StatelessWidget {
     final addressController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: AppTheme.background,
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            bool isDesktop = constraints.maxWidth > 800;
-            return Row(
-              children: [
-                if (isDesktop)
-                  Expanded(
-                    child: Container(
-                      color: AppTheme.primary,
-                      child: const Center(
-                        child: Text(
-                          'Join chamDX Community',
-                          style: TextStyle(color: Colors.white, fontSize: 32),
-                        ),
+      backgroundColor: const Color(0xFF061447),
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light.copyWith(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.dark,
+        ),
+        child: Stack(
+          children: [
+            // Ambient Background (gradient + blobs)
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFF061447),
+                    Color(0xFF030A27),
+                    Color(0xFF010518),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              top: -40,
+              right: -40,
+              child: Container(
+                width: 260,
+                height: 260,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: const Color(0xFF6CF8BB).withValues(alpha: 0.15),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: -60,
+              left: -60,
+              child: Container(
+                width: 300,
+                height: 300,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppTheme.secondary.withValues(alpha: 0.15),
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 70, sigmaY: 70),
+                child: Container(color: Colors.transparent),
+              ),
+            ),
+
+            // Main Content Layout
+            SafeArea(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  bool isDesktop = constraints.maxWidth > 800;
+
+                  Widget signupForm() {
+                    return SingleChildScrollView(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24.0,
+                        vertical: 36.0,
                       ),
-                    ),
-                  ),
-
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24.0,
-                      vertical: 48.0,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'chamDX',
-                          style: Theme.of(context).textTheme.headlineMedium
-                              ?.copyWith(
-                                color: AppTheme.primary,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Create Account',
-                          style: Theme.of(context).textTheme.headlineLarge,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Enter your details to register for your estate.',
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(color: AppTheme.outline),
-                        ),
-                        const SizedBox(height: 32),
-
-                        CustomInput(
-                          label: 'Full Name',
-                          hint: 'Full Name Please',
-                          controller: nameController,
-                        ),
-                        const SizedBox(height: 16),
-                        CustomInput(
-                          label: 'Phone Number',
-                          hint: 'Phone Number Please',
-                          controller: phoneController,
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            child: Row(
+                      child: Center(
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 480),
+                          child: GlassCard(
+                            borderRadius: 24,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0,
+                              vertical: 32.0,
+                            ),
+                            opacity: 0.1,
+                            blur: 15,
+                            child: Column(
                               mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Icon(
-                                  Icons.flag,
-                                  size: 20,
-                                  color: AppTheme.primary,
+                                // Title
+                                Text(
+                                  'chamDX',
+                                  style: Theme.of(context).textTheme.headlineMedium
+                                      ?.copyWith(
+                                        color: const Color(0xFF6CF8BB),
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
-                                const SizedBox(width: 4),
-                                const Text(
-                                  '+234',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                const SizedBox(height: 8),
+                                Text(
+                                  'Create Account',
+                                  style: Theme.of(context).textTheme.headlineLarge
+                                      ?.copyWith(color: Colors.white),
                                 ),
-                                const SizedBox(width: 8),
-                                Container(
-                                  height: 24,
-                                  width: 1,
-                                  color: AppTheme.outline,
+                                const SizedBox(height: 8),
+                                Text(
+                                  'Enter your details to register for your estate.',
+                                  style: Theme.of(context).textTheme.bodyMedium
+                                      ?.copyWith(color: Colors.white70),
                                 ),
-                                const SizedBox(width: 8),
+                                const SizedBox(height: 32),
+
+                                // Full Name
+                                CustomInput(
+                                  label: 'Full Name',
+                                  hint: 'Full Name Please',
+                                  isDark: true,
+                                  controller: nameController,
+                                ),
+                                const SizedBox(height: 16),
+
+                                // Phone Number
+                                CustomInput(
+                                  label: 'Phone Number',
+                                  hint: 'Phone Number Please',
+                                  isDark: true,
+                                  controller: phoneController,
+                                  prefixIcon: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Icon(
+                                          Icons.flag_rounded,
+                                          size: 20,
+                                          color: Color(0xFF6CF8BB),
+                                        ),
+                                        const SizedBox(width: 4),
+                                        const Text(
+                                          '+234',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Container(
+                                          height: 24,
+                                          width: 1,
+                                          color: Colors.white24,
+                                        ),
+                                        const SizedBox(width: 8),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+
+                                // Residential Address
+                                CustomInput(
+                                  label: 'Residential Address',
+                                  hint: 'e.g. Block 12, Unit 4B',
+                                  isDark: true,
+                                  controller: addressController,
+                                ),
+                                const SizedBox(height: 16),
+
+                                // Email Address
+                                CustomInput(
+                                  label: 'Email Address',
+                                  hint: 'name@example.com',
+                                  isDark: true,
+                                  controller: emailController,
+                                ),
+                                const SizedBox(height: 16),
+
+                                // Password
+                                CustomInput(
+                                  label: 'Password',
+                                  hint: '••••••••',
+                                  isPassword: true,
+                                  isDark: true,
+                                  controller: passwordController,
+                                ),
+                                const SizedBox(height: 32),
+
+                                // Sign Up button
+                                Obx(
+                                  () => PremiumButton(
+                                    text: 'Sign Up',
+                                    isNeon: true,
+                                    isLoading: authController.isLoading.value,
+                                    onPressed: () {
+                                      if (nameController.text.isNotEmpty &&
+                                          emailController.text.isNotEmpty &&
+                                          passwordController.text.isNotEmpty &&
+                                          phoneController.text.isNotEmpty &&
+                                          addressController.text.isNotEmpty) {
+                                        authController.register(
+                                          emailController.text,
+                                          passwordController.text,
+                                          nameController.text,
+                                          '+234${phoneController.text}',
+                                          addressController.text,
+                                        );
+                                      } else {
+                                        Get.snackbar(
+                                          'Error',
+                                          'Please fill in all required fields',
+                                          backgroundColor: Colors.red.withValues(alpha: 0.8),
+                                          colorText: Colors.white,
+                                        );
+                                      }
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(height: 32),
+
+                                // Toggle/Back to Log in
+                                Center(
+                                  child: Wrap(
+                                    alignment: WrapAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'Already have an account? ',
+                                        style: TextStyle(color: Colors.white70),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () => Get.back(),
+                                        child: const Text(
+                                          'Log In',
+                                          style: TextStyle(
+                                            color: Color(0xFF6CF8BB),
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
                         ),
-                        const SizedBox(height: 16),
-                        CustomInput(
-                          label: 'Residential Address',
-                          hint: 'e.g. Block 12, Unit 4B',
-                          controller: addressController,
-                        ),
-                        const SizedBox(height: 16),
-                        CustomInput(
-                          label: 'Email Address',
-                          hint: 'name@example.com',
-                          controller: emailController,
-                        ),
-                        const SizedBox(height: 16),
-                        CustomInput(
-                          label: 'Password',
-                          hint: '••••••••',
-                          isPassword: true,
-                          controller: passwordController,
-                        ),
+                      ),
+                    );
+                  }
 
-                        const SizedBox(height: 32),
-
-                        Obx(
-                          () => PremiumButton(
-                            text: 'Sign Up',
-                            isLoading: authController.isLoading.value,
-                            onPressed: () {
-                              if (nameController.text.isNotEmpty &&
-                                  emailController.text.isNotEmpty &&
-                                  passwordController.text.isNotEmpty &&
-                                  phoneController.text.isNotEmpty &&
-                                  addressController.text.isNotEmpty) {
-                                // Register user
-                                authController.register(
-                                  emailController.text,
-                                  passwordController.text,
-                                  nameController.text,
-                                  '+234${phoneController.text}',
-                                  addressController.text,
-                                );
-                              } else {
-                                Get.snackbar(
-                                  'Error',
-                                  'Please fill in all required fields',
-                                );
-                              }
-                            },
-                          ),
-                        ),
-
-                        const SizedBox(height: 32),
-
-                        Center(
-                          child: Wrap(
-                            alignment: WrapAlignment.center,
-                            children: [
-                              const Text(
-                                'Already have an account? ',
-                                style: TextStyle(color: AppTheme.outline),
+                  if (isDesktop) {
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Color(0xFF061447),
+                                  Color(0xFF006C49),
+                                ],
                               ),
-                              GestureDetector(
-                                onTap: () => Get.back(),
-                                child: const Text(
-                                  'Log In',
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(
+                                  Icons.people_alt_rounded,
+                                  size: 100,
+                                  color: Color(0xFF6CF8BB),
+                                ),
+                                const SizedBox(height: 24),
+                                const Text(
+                                  'chamDX',
                                   style: TextStyle(
-                                    color: AppTheme.primary,
+                                    color: Colors.white,
+                                    fontSize: 48,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              ),
-                            ],
+                                const SizedBox(height: 16),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 48.0),
+                                  child: Text(
+                                    'Join chamDX Community',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Colors.white.withValues(alpha: 0.8),
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: double.infinity,
+                            alignment: Alignment.center,
+                            child: signupForm(),
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
+                    );
+                  }
+
+                  return signupForm();
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
